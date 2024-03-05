@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 1800px;
+                 height: 1200px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Antlion(Threat Actor)", "label": "Antlion(Threat Actor)", "shape": "dot", "size": 10, "type": "entity", "x": 333.3333333333333, "y": 750.0}, {"color": "#97c2fc", "depth": 2, "font_size": 8, "id": "Taiwan(Location)", "label": "Taiwan(Location)", "shape": "dot", "size": 10, "type": "entity", "x": 433.3333333333333, "y": 850.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_0", "label": "Use\n6", "sent_nums": [6], "shape": "triangle", "size": 10, "tactic": "Impact", "technique": "Impact-Others", "type": "event", "x": 0, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_1", "label": "Use\n7", "sent_nums": [7], "shape": "triangle", "size": 10, "tactic": "Impact", "technique": "Impact-Others", "type": "event", "x": 200, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_2", "label": "Use\n24", "sent_nums": [24], "shape": "triangle", "size": 10, "tactic": "Impact", "technique": "Impact-T1498-Network Denial of Service", "type": "event", "x": 400, "y": 100.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_3", "label": "Use\n24", "sent_nums": [24], "shape": "triangle", "size": 10, "tactic": "Impact", "technique": "Impact-Others", "type": "event", "x": 400, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_4", "label": "Use\n24", "sent_nums": [24], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 400, "y": -100.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_5", "label": "Use\n26", "sent_nums": [26], "shape": "triangle", "size": 10, "tactic": "Impact", "technique": "Impact-Others", "type": "event", "x": 600, "y": 0.0}, {"color": "#97c2fc", "depth": 2, "font_size": 8, "id": "CVE-2019-1458(Vulnerablity)", "label": "CVE-2019-1458(Vulnerablity)", "shape": "dot", "size": 10, "type": "entity", "x": 233.33333333333331, "y": 850.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "xPack(Malware)", "label": "xPack(Malware)", "shape": "dot", "size": 10, "type": "entity", "x": 500.0, "y": 750.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Impact", "label": "Impact", "shape": "star", "size": 10, "type": "tactic", "x": 133.33333333333334, "y": -550.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Impact-Others", "label": "Impact-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 0.0, "y": -450.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Impact-T1498-Network Denial of Service", "label": "Impact-T1498-Network Denial of Service", "shape": "hexagon", "size": 10, "type": "technique", "x": 266.6666666666667, "y": -450.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "EternalBlue(Vulnerablity)", "label": "EternalBlue(Vulnerablity)", "shape": "dot", "size": 10, "type": "entity", "x": 200.0, "y": 750.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "NetSessionEnum(Security Tool)", "label": "NetSessionEnum(Security Tool)", "shape": "dot", "size": 10, "type": "entity", "x": 800.0, "y": 750.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Mimikatz(Security Tool)", "label": "Mimikatz(Security Tool)", "shape": "dot", "size": 10, "type": "entity", "x": 600.0, "y": 750.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "ENCODE MMC(Security Tool)", "label": "ENCODE MMC(Security Tool)", "shape": "dot", "size": 10, "type": "entity", "x": 300.0, "y": 750.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Others", "label": "Others", "shape": "star", "size": 10, "type": "tactic", "x": 533.3333333333334, "y": -550.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Others-Others", "label": "Others-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 533.3333333333334, "y": -450.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_6", "label": "Detect\n73", "sent_nums": [73], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 800, "y": 350.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_7", "label": "Detect\n73", "sent_nums": [73], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 800, "y": 250.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_8", "label": "Detect\n73", "sent_nums": [73], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 800, "y": 150.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_9", "label": "Detect\n73", "sent_nums": [73], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 800, "y": 50.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_10", "label": "Detect\n73", "sent_nums": [73], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 800, "y": -50.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_11", "label": "Detect\n73", "sent_nums": [73], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 800, "y": -150.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_12", "label": "Detect\n73", "sent_nums": [73], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 800, "y": -250.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_13", "label": "Detect\n73", "sent_nums": [73], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 800, "y": -350.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "AnyDesk(Security Tool)", "label": "AnyDesk(Security Tool)", "shape": "dot", "size": 10, "type": "entity", "x": 400.0, "y": 750.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "MMC(Security Tool)", "label": "MMC(Security Tool)", "shape": "dot", "size": 10, "type": "entity", "x": 1100.0, "y": 750.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Symantec(Author)", "label": "Symantec(Author)", "shape": "dot", "size": 10, "type": "entity", "x": 1300.0, "y": 750.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "checkID(Malware)", "label": "checkID(Malware)", "shape": "dot", "size": 10, "type": "entity", "x": 900.0, "y": 750.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "JpgRun(Malware)", "label": "JpgRun(Malware)", "shape": "dot", "size": 10, "type": "entity", "x": 700.0, "y": 750.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Keylogger(Malware)", "label": "Keylogger(Malware)", "shape": "dot", "size": 10, "type": "entity", "x": 500.0, "y": 750.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "EHAGBPSL(Malware)", "label": "EHAGBPSL(Malware)", "shape": "dot", "size": 10, "type": "entity", "x": 300.0, "y": 750.0}, {"color": "#97c2fc", "font_size": 8, "id": "Threat Hunter Team(Author)", "label": "Threat Hunter Team(Author)", "shape": "dot", "size": 10, "type": "entity"}, {"color": "#97c2fc", "font_size": 8, "id": "Symantec(Organization)", "label": "Symantec(Organization)", "shape": "dot", "size": 10, "type": "entity"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Antlion(Threat Actor)", "label": "Has geolocation", "relation": "Has geolocation", "to": "Taiwan(Location)", "width": 1}, {"arrows": "to", "from": "Antlion(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_0", "width": 1}, {"arrows": "to", "from": "Antlion(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_1", "width": 1}, {"arrows": "to", "from": "Antlion(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_2", "width": 1}, {"arrows": "to", "from": "Antlion(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_3", "width": 1}, {"arrows": "to", "from": "Antlion(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_4", "width": 1}, {"arrows": "to", "from": "Antlion(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_5", "width": 1}, {"arrows": "to", "from": "Antlion(Threat Actor)", "label": "Exploit", "relation": "Exploit", "to": "CVE-2019-1458(Vulnerablity)", "width": 1}, {"arrows": "to", "from": "Use_0", "label": "Object", "relation": "Object", "to": "xPack(Malware)", "width": 1}, {"arrows": "to", "from": "Use_0", "to": "Use_1", "width": 1}, {"arrows": "to", "from": "Impact", "to": "Impact-Others", "width": 1}, {"arrows": "to", "from": "Impact", "to": "Impact-T1498-Network Denial of Service", "width": 1}, {"arrows": "to", "from": "Impact-Others", "to": "Use_0", "width": 1}, {"arrows": "to", "from": "Impact-Others", "to": "Use_1", "width": 1}, {"arrows": "to", "from": "Impact-Others", "to": "Use_3", "width": 1}, {"arrows": "to", "from": "Impact-Others", "to": "Use_5", "width": 1}, {"arrows": "to", "from": "Use_1", "label": "Object", "relation": "Object", "to": "EternalBlue(Vulnerablity)", "width": 1}, {"arrows": "to", "from": "Use_1", "to": "Use_2", "width": 1}, {"arrows": "to", "from": "Use_1", "to": "Use_3", "width": 1}, {"arrows": "to", "from": "Use_1", "to": "Use_4", "width": 1}, {"arrows": "to", "from": "Use_2", "label": "Object", "relation": "Object", "to": "NetSessionEnum(Security Tool)", "width": 1}, {"arrows": "to", "from": "Use_2", "to": "Use_5", "width": 1}, {"arrows": "to", "from": "Impact-T1498-Network Denial of Service", "to": "Use_2", "width": 1}, {"arrows": "to", "from": "Use_3", "label": "Object", "relation": "Object", "to": "Mimikatz(Security Tool)", "width": 1}, {"arrows": "to", "from": "Use_3", "to": "Use_5", "width": 1}, {"arrows": "to", "from": "Use_4", "label": "Object", "relation": "Object", "to": "ENCODE MMC(Security Tool)", "width": 1}, {"arrows": "to", "from": "Use_4", "to": "Use_5", "width": 1}, {"arrows": "to", "from": "Others", "to": "Others-Others", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Use_4", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Detect_6", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Detect_7", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Detect_8", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Detect_9", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Detect_10", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Detect_11", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Detect_12", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Detect_13", "width": 1}, {"arrows": "to", "from": "Use_5", "label": "Object", "relation": "Object", "to": "AnyDesk(Security Tool)", "width": 1}, {"arrows": "to", "from": "Use_5", "to": "Detect_6", "width": 1}, {"arrows": "to", "from": "Use_5", "to": "Detect_7", "width": 1}, {"arrows": "to", "from": "Use_5", "to": "Detect_8", "width": 1}, {"arrows": "to", "from": "Use_5", "to": "Detect_9", "width": 1}, {"arrows": "to", "from": "Use_5", "to": "Detect_10", "width": 1}, {"arrows": "to", "from": "Use_5", "to": "Detect_11", "width": 1}, {"arrows": "to", "from": "Use_5", "to": "Detect_12", "width": 1}, {"arrows": "to", "from": "Use_5", "to": "Detect_13", "width": 1}, {"arrows": "to", "from": "Detect_6", "label": "Object", "relation": "Object", "to": "MMC(Security Tool)", "width": 1}, {"arrows": "to", "from": "Symantec(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_6", "width": 1}, {"arrows": "to", "from": "Symantec(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_7", "width": 1}, {"arrows": "to", "from": "Symantec(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_8", "width": 1}, {"arrows": "to", "from": "Symantec(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_9", "width": 1}, {"arrows": "to", "from": "Symantec(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_10", "width": 1}, {"arrows": "to", "from": "Symantec(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_11", "width": 1}, {"arrows": "to", "from": "Symantec(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_12", "width": 1}, {"arrows": "to", "from": "Symantec(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_13", "width": 1}, {"arrows": "to", "from": "Detect_7", "label": "Object", "relation": "Object", "to": "checkID(Malware)", "width": 1}, {"arrows": "to", "from": "Detect_8", "label": "Object", "relation": "Object", "to": "xPack(Malware)", "width": 1}, {"arrows": "to", "from": "Detect_9", "label": "Object", "relation": "Object", "to": "JpgRun(Malware)", "width": 1}, {"arrows": "to", "from": "Detect_10", "label": "Object", "relation": "Object", "to": "Keylogger(Malware)", "width": 1}, {"arrows": "to", "from": "Detect_11", "label": "Object", "relation": "Object", "to": "EHAGBPSL(Malware)", "width": 1}, {"arrows": "to", "from": "Detect_12", "label": "Object", "relation": "Object", "to": "NetSessionEnum(Security Tool)", "width": 1}, {"arrows": "to", "from": "Detect_13", "label": "Object", "relation": "Object", "to": "Mimikatz(Security Tool)", "width": 1}, {"arrows": "to", "from": "Threat Hunter Team(Author)", "label": "Belong to", "relation": "Belong to", "to": "Symantec(Organization)", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

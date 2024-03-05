@@ -1,0 +1,318 @@
+4/27/22, 4:16 PM
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Asylum Ambuscade: State Actor Uses CompromisedPrivate Ukrainian Military Emails to Target EuropeanGovernments and Refugee Movement
+
+proofpoint.com/us/blog/threat-insight/asylum-ambuscade-state-actor-uses-compromised-private-ukrainian-
+
+military-emails
+
+March 1, 2022
+
+BlogThreat InsightAsylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails toTarget European Governments and Refugee Movement
+
+March 01, 2022 Michael Raggi, Zydeca Cass and the Proofpoint Threat Research Team
+
+Key Takeaways
+
+Proofpoint has identified a likely nation-state sponsored phishing campaign using apossibly compromised Ukrainian armed service member’s email account to targetEuropean government personnel involved in managing the logistics of refugeesfleeing Ukraine.The email included a malicious macro attachment which attempted to download aLua-based malware dubbed SunSeed.The infection chain used in this campaign bears significant similarities to a historiccampaign Proofpoint observed in July 2021, making it likely the same threat actor isbehind both clusters of activity.Proofpoint is releasing this report in an effort to balance accuracy withresponsibility to disclose actionable intelligence during a time of high-tempoconflict. 
+
+Overview
+
+“Ambuscade: To attack suddenly and without warning from a concealed place”
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Proofpoint researchers have identified a phishing campaign originating from an emailaddress (ukr[.]net) that appears to belong to a compromised Ukranian armed servicemember. This discovery comes on the heels of alerts by the Ukrainian ComputerEmergency Response Team (CERT-UA) and the State Service of Special Communicationsand Information Protection of Ukraine about widespread phishing campaigns targetingprivate email accounts of Ukrainian armed service members by ‘UNC1151’, whichProofpoint tracks as part of TA445. The email observed by Proofpoint may represent thenext stage of these attacks. The email included a malicious macro attachment whichutilized social engineering themes pertaining to the Emergency Meeting of the NATOSecurity Council held on February 23, 2022. The email also contained a maliciousattachment which attempted to download malicious Lua malware named SunSeed andtargeted European government personnel tasked with managing transportation andpopulation movement in Europe. While Proofpoint has not definitively attributed thiscampaign to the threat actor TA445, researchers acknowledge that the timeline, use ofcompromised sender addresses aligning with Ukrainian government reports, and thevictimology of the campaign align with published TA445 tactics to include the targetingand collection around refugee movement in Europe. 
+
+Proofpoint assesses that, in light of the ongoing Russia-Ukraine war, actions by proxyactors like TA445 will continue to target European governments to gather intelligencearound the movement of refugees from Ukraine and on issues of importance to theRussian government. TA445, which appears to operate out of Belarus, specifically hasa history of engaging in a significant volume of disinformation operations intended tomanipulate European sentiment around the movement of refugees within NATOcountries. These controlled narratives may intend to marshal anti-refugee sentimentwithin European countries and exacerbate tensions between NATO members, decreasingWestern support for the Ukrainian entities involved in armed conflict. This approach isa known factor within the hybrid warfare model employed by the Russian military and byextension that of Belarus.
+
+Delivery
+
+On February 24, 2022, Proofpoint detected an email originating from a ukr[.]net emailaddress which was sent to a European government entity. The email utilized the subject"IN ACCORDANCE WITH THE DECISION OF THE EMERGENCY MEETING OF THESECURITY COUNCIL OF UKRAINE DATED 24.02.2022" and included a macro enabledXLS file titled “list of persons.xlsx,” which was later determined to deliver SunSeedmalware. The social engineering lure utilized in this phishing campaign were very timely,following a NATO Security Council meeting on February 23, 2022 and a news story abouta Russian government “kill list” targeting Ukrainians that began circulating in Westernmedia outlets on February 21, 2022. The format of the subject included the date“24.02.2022” at the end of subject line and was superficially similar to emails reported bythe State Service of Special Communications and Information Protection of Ukraine(SSSCIP) on February 25, 2022. This alert indicated that mass phishing campaigns were
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+targeting “Citizens’ e-mail addresses” in Ukraine. The timing of the Proofpoint observedcampaign is notable as it occurred within close proximity to the campaigns reported byUkrainian state agencies. 
+
+Figure 1. SSSCIP Ukraine reported email including date format 24.02.2022.
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Figure 2. CERT-UA reports of UNC1151 targeting private accounts of Ukrainianmilitary personnel.
+
+Open-source research on the sender email address identified the account on a Ukrainianpublic procurement document for a Stihl lawn mower in 2016. The email account waslisted as the contact address on the purchase, while the customer was listed as “Військовачастина А2622” or military unit A2622. This title, as well as the address listed, appear torefer to a military barracks that houses a military unit in “Чернігівська область” or theChernihiv region of Ukraine. While Proofpoint has not definitively determined that thisdetected campaign is aligned with the phishing campaigns reported by the Ukrainiangovernment or that this activity can be attributed to TA445, researchers assess that thismay represent a continuation of the campaigns that utilize compromised Ukrainianpersonal accounts of armed service members to target the governments of NATOmembers in Europe.
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Figure 3. Ukrainian military procurement documents including possible compromisedsender email as contact.
+
+Macro Enabled Attachments
+
+The malicious XLS attachment observed in the email was laden with a simple but distinctmacro. When enabled, it executes a VB macro named “Module1” which creates aWindows Installer (msiexec.exe) object invoking Windows Installer to call out to anactor-controlled staging IP and download a malicious MSI package. It also sets aMicrosoft document UILevel equal to “2” which specifies a user interface level of“completely silent installation.” This hides all macro actions and network connectionsfrom the user. The actor accesses the delivery IP via the MicrosoftInstaller InstallProduct method which is intended to obtain an MSI install file from aURL, save it to a cached location, and finally begin installation of the MSI package. Sincethe actor is utilizing an MSI package as an installer for a Lua-based malware, this methodis well suited to be deployed via a malicious macro-laden document delivered viaphishing.
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Figure 4. Observed malicious macro within list of persons.xlsx.
+
+SunSeed Lua Malware Installation
+
+Analysis of the actor-controlled delivery infrastructure identified an MSI package whichinstalled a series of Lua-based dependencies, executed a malicious Lua script thatProofpoint has dubbed SunSeed, and established persistence via an LNK file installed forautorun at Windows Startup. This file, named qwerty_setup.msi, waspreviously identified publicly by security researcher Colin Hardy in response toProofpoint’s initial content regarding this threat. The package installs 12 legitimate Luadependencies, a Windows Lua interpreter, a malicious Lua script (SunSeed), and aWindows shortcut LNK file for persistence. Notably, the legitimate Windows Luainterpreter sppsvc.exe has been modified so it does not print any output to the WindowsConsole. This is likely an effort to conceal the malware installation from the infected user.All files, except for the LNK file, are installed to the folder C:\ProgramData\.security-
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+soft\. The LNK persistence script, which executes the SunSeed command “print.lua” viathe Window Lua interpreter, is saved to the directory C:\ProgramData\.security-soft\sppsvc.exe to be executed at startup. This executes the malicious SunSeed Lua script“print.lua” that attempts to retrieve additional malicious Lua code from the actorcommand and control (C2) server.
+
+Legitimate Files and Lua Dependencies:
+
+luacom.dll (LuaCom Library)ltn12.lua (LuaSocket: LTN12 module)mime.lua (MIME support for the Lua language)http.lua (HTTP library for Lua)url.lua (luasocket)tp.lua (luasocket)socket.lua (luasocket)tp.luacore.dllmime.dlllua51.dllsppsvc.exe (Lua Windows Standalone Interpreter – modified to suppress consoleoutput)<6 characters>.rbs (Windows Installer Rollback Script) 
+
+Persistence File:
+
+Software Protection Service.lnk
+
+Installation Directory:
+
+~\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\SoftwareProtection Service.lnk
+
+Malicious SunSeed Lua Script:
+
+print.lua|7bf33b494c70bd0a0a865b5fbcee0c58fa9274b8741b03695b45998bcd459328
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Figure 5. Asylum Ambuscade - Campaign Snapshot.
+
+Proofpoint researchers observed several distinct and unusual aspects about the MSIpackage upon closer inspection. The actor utilized the Japanese Shift-JIS code base,resulting in a Japanese language installation message upon launching the MSI package.This may be a rudimentary false flag intended to conceal the spoken language of thethreat actor. Additionally, examination of the cryptography calls made by the packageduring installation indicates that the MSI file appears to have been created using a datedversion of WiX Toolset version 3.11.0.1528. This is an open-source software that allowsusers to “build MSIs without requiring additional software on a build server” from thecommand line. This version was last updated in 2017 with a more recent update beingpushed in 2019 and an entirely new version of the toolset made available in May 2021.
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Figure 6. Japanese code base MSI package installation display.
+
+Figure 7. MSI package cryptography call indicating Windows Installer XML version.
+
+SunSeed Malware Capabilities: A Lua Downloader
+
+Based on decoding of the SunSeed print.lua malicious second stage payload script, itappears to be a simple downloader which obtains the C Drive partition serial numberfrom the host, appends to a URL request via a Lua socket, consistently pings the C2 serverfor additional Lua code, and executes the code upon receiving it within a response. At thetime of analysis, Proofpoint did not receive additional Lua code from the C2 server.However, researchers believe that this is likely intended to deliver subsequent stage
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+payloads to the infected host. Further attempts to decode the SunSeed Lua host includedseveral notable strings that may suggest a possible response from the actor-controlledserver. These strings do not appear to be part of the initial SunSeed script’s functionalityin the absence of a C2 server response. Observed string values include, but are not limitedto: 
+
+“serial”“string”“luacom”“CreateObject”“Scripting.FileSystemObject”“Drives”“SerialNumber”“socket.http”“request”“http://84.32.188[.]96/”“ socket”“sleep”
+
+Command and Control
+
+The SunSeed malware when executed issues GET requests over HTTP via port 80 using aLua Socket. The requests are issued to the C2 server every three seconds anticipating aresponse. The malware specifies the user agent as “LuaSocket 2.0.2” and appends theinfected target’s C Drive partition serial number to the URI request. This is a uniquedecimal digit value assigned to a drive upon creation of the file system. It may be anattempt by actors to track infected victims on the backend per their unique serial number.Additionally, this may allow operators to be selective about which infections are issued anext stage payload response. Based on the observed strings in the Lua script, researchersspeculate that the server response may include further malicious commands, or a Luabased installer code which is executed as a response to the SunSeed payload, dependingon the received serial identification number. 
+
+Figure 8. SunSeed Lua malware C2 communication. 
+
+Victimology and Targeting
+
+With the finite data set available to Proofpoint surrounding this campaign, limitedconclusions can be drawn regarding targeting. The Proofpoint-observed email messageswere limited to European governmental entities. The targeted individuals possessed a
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+range of expertise and professional responsibilities. However, there was a clearpreference for targeting individuals with responsibilities related to transportation,financial and budget allocation, administration, and population movement withinEurope. This campaign may represent an attempt to gain intelligence regarding thelogistics surrounding the movement of funds, supplies, and people within NATO membercountries.
+
+Attribution Remains Unclear
+
+Several temporal and anecdotal indicators exist which suggest that this activity alignswith reported campaigns by the threat actor TA445/UNC1151/Ghostwriter. However,Proofpoint has not yet observed concrete technical overlaps which would allow us todefinitively attribute this campaign to this actor. In addition to the notable overlaps withUkrainian government reported campaigns referenced previously, the victimology of thiscampaign with prominent NATO governments being targeted and a possible focus on themovements of refugees in NATO countries recalls historic motivations of TA445’sinformation operations circa 2021. Specifically, the anti-migratory narrativesdisseminated by the group also referred to as Ghostwriter during the 2021 migratorycrisis in which Belarus intentionally funneled refugees to the Polish border belies apossible connection between this 2022 campaign and TA445’s historic mandate. Mainlyboth campaigns may indicate the weaponization of migrants and refugees of war througha hybrid information warfare and targeted cyber-attack model. Researchers at Mandiantaddressed these tactics by UNC1151’s information operation team referred to asGhostwriter (collectively TA445) in a recent presentation (12:17 time stamp), disclosingthe existence of the group and attributing the activity to Belarus. Proofpoint also notesthat, in addition to the Asylum Ambuscade operation, in recent days researchers havedetected TA445 credential harvesting activity that aligns with Mandiant’s description ofthis threat group to include the use of GoPhish to deliver malicious email content. Thisactivity appears distinct from the Asylum Ambuscade campaign. Proofpoint is currentlytracking the actor responsible for Asylum Ambuscade as distinct from TA445 until atechnical relationship can be further established. 
+
+Tactic
+
+Asylum AmbuscadeCampaign
+
+TA445
+
+Document Attachment Phishing
+
+Focus on Refugee Issues and NATO
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Use of Macro Enabled Documents
+
+Use of GoPhish
+
+Use of MSI Packages
+
+Use of Lua Based Malware
+
+Use of Compromised SenderInfrastructure
+
+Figure 9. Comparison of Asylum Ambuscade campaign and TA445 TTPs.
+
+While Proofpoint has not definitively determined attribution at this time, researchersassess with moderate confidence that this campaign and a historic campaign from July2021 were conducted by the same threat actor. The July 2021 campaign utilized a highlysimilar macro-laden XLS attachment to deliver MSI packages that install a Lua malwarescript. Similarly, the campaign utilized a very recent government report as the basis of thesocial engineering content and titled the malicious attachment “list of participants of thebriefing.xls.” In addition to the file name being quite similar to the Asylum Ambuscadecampaign, the Lua script created a nearly identical URI beacon to the SunSeed sample,which was composed of the infected victim’s C Drive partition serial number. Analysis ofthe cryptography calls in both samples revealed that the same version of WiX 3.11.0.1528had been utilized to create the MSI packages. Finally, the macros in this historiccampaign utilized the identical technique as the Asylum Ambuscade campaign, usingWindows Installer to retrieve an MSI package from an actor-controlled IP resource andsuppressing indications of installation from the user. The July 2021 campaign targetedsenior cyber security practitioners and decisionmakers at private US-based companies,including those in the defense sector.
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+Figure 10. Historic malicious macro seen in July 2021.
+
+Conclusion: Balancing Accurate Reporting in a Timely Fashion
+
+This activity, independent of attribution conclusions, represents an effort to target NATOentities with compromised Ukrainian military accounts during an active period of armedconflict between Russia, its proxies, and Ukraine. In publishing this report, Proofpointseeks to balance the accuracy of responsible reporting with the quickest possibledisclosure of actionable intelligence. The onset of hybrid conflict, including within thecyber domain, has accelerated the pace of operations and reduced the amount of time thatdefenders have to answer deeper questions around attribution and historical correlationto known nation-state operators. However, these are issues that Proofpoint will continueto research while protecting customers globally. Proofpoint invites additional details andinput around any observed activity that aligns with these reports. While the utilized
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+techniques in this campaign are not groundbreaking individually, if deployed collectively,and during a high tempo conflict, they possess the capability to be quite effective. As theconflict continues, researchers assess similar attacks against governmental entities inNATO countries are likely. Additionally, the possibility of exploiting intelligence aroundrefugee movements in Europe for disinformation purposes is a proven part of Russianand Belarussian-state techniques. Being aware of this threat and disclosing it publicly areparamount for cultivating awareness among targeted entities. 
+
+Indicators of Compromise (IOCs) 
+
+<redacted>@ukr[.]net
+
+Type IOC
+
+SendeEma
+
+IN ACCORDANCE WITH THE DECISION OF THE EMERGENCY MEETINGOF THE SECURITY COUNCIL OF UKRAINE DATED 24.02.2022
+
+EmaSubje
+
+list of persons.xls1561ece482c78a2d587b66c8eaf211e806ff438e506fcef8f14ae367db82d9b3
+
+Attachm
+
+84.32.188[.]96
+
+qwerty_setup.msi
+
+MSIPacka
+
+31d765deae26fb5cb506635754c700c57f9bd0fc643a622dc0911c42bf93d18f
+
+print.lua7bf33b494c70bd0a0a865b5fbcee0c58fa9274b8741b03695b45998bcd459328
+
+Lua Sc
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+luacom.dllf97f26f9cb210c0fcf2b50b7b9c8c93192b420cdbd946226ec2848fd19a9af2c
+
+Files
+
+ltn12.luab1864aed85c114354b04fbe9b3f41c5ebc4df6d129e08ef65a0c413d0daabd29
+
+mime.luae9167e0da842a0b856cbe6a2cf576f2d11bcedb5985e8e4c8c71a73486f6fa5a
+
+http.luad10fbef2fe8aa983fc6950772c6bec4dc4f909f24ab64732c14b3e5f3318700c
+
+socket.dll3694f63e5093183972ed46c6bef5c63e0548f743a8fa6bb6983dcf107cab9044
+
+mime.dll976b7b17f2663fee38d4c4b1c251269f862785b17343f34479732bf9ddd29657
+
+lua5.1.dllfbbe7ee073d0290ac13c98b92a8405ea04dcc6837b4144889885dd70679e933f
+
+url.lua269526c11dbb25b1b4b13eec4e7577e15de33ca18afa70a2be5f373b771bd1ab
+
+sppsvc.exe737f08702f00e78dbe78acbeda63b73d04c1f8e741c5282a9aa1409369b6efa8
+
+tp.lua
+
+343afa62f69c7c140fbbf02b4ba2f7b2f711b6201bb6671c67a3744394084269
+
+socket.lua15fd138a169cae80fecf4c797b33a257d587ed446f02ecf3ef913e307a22f96d
+
+Software Protection Service.lnk
+
+File Na
+
+AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\SoftwareProtection Service.lnk
+
+DirectoPath
+
+C:\ProgramData\.security-soft
+
+hxxp://84.32.188[.]96/<hexadecimal_value>
+
+DirectoPath
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+MSIPacka
+
+Files
+
+list of participants of the briefing.xls
+
+a8fd0a5de66fa39056c0ddf2ec74ccd38b2ede147afa602aba00a3f0b55a88e0
+
+157.230.104[.]79
+
+i.msi
+
+2e1de7b61ed25579e796ec4c0df2e25d2b98a1f8d4fdb077e2b52ee06c768fca
+
+hxxp://45.61.137[.]231/?id=<hexdecimal_value>
+
+wlua5.1.exe
+
+737f08702f00e78dbe78acbeda63b73d04c1f8e741c5282a9aa1409369b6efa8
+
+core.lua
+
+737f08702f00e78dbe78acbeda63b73d04c1f8e741c5282a9aa1409369b6efa8
+
+luacom.dll
+
+f97f26f9cb210c0fcf2b50b7b9c8c93192b420cdbd946226ec2848fd19a9af2c
+
+struct.dll
+
+5b317f27ad1e2c641f85bef601740b65e93f28df06ed03daa1f98d0aa5e69cf0
+
+ltn12.lua
+
+b1864aed85c114354b04fbe9b3f41c5ebc4df6d129e08ef65a0c413d0daabd29
+
+mime.lua
+
+e9167e0da842a0b856cbe6a2cf576f2d11bcedb5985e8e4c8c71a73486f6fa5a
+
+http.lua
+
+d10fbef2fe8aa983fc6950772c6bec4dc4f909f24ab64732c14b3e5f3318700c
+
+socket.dll
+
+3694f63e5093183972ed46c6bef5c63e0548f743a8fa6bb6983dcf107cab9044
+
+core.dll
+
+9aa3ca96a84eb5606694adb58776c9e926020ef184828b6f7e6f9b50498f7071
+
+Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…
+
+core.lua
+
+20180a8012970453daef6db45b2978fd962d2168fb3b2b1580da3af6465fe2f6
+
+mime.dll
+
+976b7b17f2663fee38d4c4b1c251269f862785b17343f34479732bf9ddd29657
+
+lua5.1.dll
+
+fbbe7ee073d0290ac13c98b92a8405ea04dcc6837b4144889885dd70679e933f
+
+url.lua
+
+269526c11dbb25b1b4b13eec4e7577e15de33ca18afa70a2be5f373b771bd1ab
+
+alien.lua
+
+303e004364b1beda0338eb10a845e6b0965ca9fa8ee16fa9f3a3c6ef03c6939f
+
+tp.lua
+
+343afa62f69c7c140fbbf02b4ba2f7b2f711b6201bb6671c67a3744394084269
+
+socket.lua
+
+15fd138a169cae80fecf4c797b33a257d587ed446f02ecf3ef913e307a22f96d
+
+YARA Signatures
+

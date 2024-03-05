@@ -1,0 +1,515 @@
+{
+  "events": [
+    {
+      "Subject": "State Actor(Threat Actor)",
+      "Relation": "Target",
+      "Object": "Refugee Movement(Location)",
+      "SentenceNums": [
+        1
+      ]
+    },
+    {
+      "Subject": "State Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Compromised Private Ukrainian Military Emails(Infrastructure)",
+      "SentenceNums": [
+        1
+      ]
+    },
+    {
+      "Subject": "State Actor(Threat Actor)",
+      "Relation": "Target",
+      "Object": "European Governments(Organization)",
+      "SentenceNums": [
+        1
+      ]
+    },
+    {
+      "Subject": "Email(Infrastructure)",
+      "Relation": "Has URL",
+      "Object": "proofpoint.com(URL)",
+      "SentenceNums": [
+        3,
+        4
+      ]
+    },
+    {
+      "Subject": "Zydeca Cass(Author)",
+      "Relation": "Belong to",
+      "Object": "Proofpoint Threat Research Team(Organization)",
+      "SentenceNums": [
+        7
+      ]
+    },
+    {
+      "Subject": "Michael Raggi(Author)",
+      "Relation": "Belong to",
+      "Object": "Proofpoint Threat Research Team(Organization)",
+      "SentenceNums": [
+        7
+      ]
+    },
+    {
+      "Subject": "Author",
+      "Relation": "Write",
+      "Object": "Report Type",
+      "SentenceNums": [
+        7
+      ]
+    },
+    {
+      "Subject": "Proofpoint(Vender)",
+      "Relation": "Detect",
+      "Object": "Phishing Campaign(Tactic)",
+      "SentenceNums": [
+        9
+      ]
+    },
+    {
+      "Subject": "Email(Infrastructure)",
+      "Relation": "Has URL",
+      "Object": "ukr[.](URL)",
+      "SentenceNums": [
+        13
+      ]
+    },
+    {
+      "Subject": "Email(Infrastructure)",
+      "Relation": "Has geolocation",
+      "Object": "Ukraine(Location)",
+      "SentenceNums": [
+        13
+      ]
+    },
+    {
+      "Subject": "State Service of Special Communications and Information Protection of Ukraine(Organization)",
+      "Relation": "Detect",
+      "Object": "Phishing Campaign(Tactic)",
+      "SentenceNums": [
+        15
+      ]
+    },
+    {
+      "Subject": "UNC1151(Threat Actor)",
+      "Relation": "Belong to",
+      "Object": "TA445(Threat Actor)",
+      "SentenceNums": [
+        15
+      ]
+    },
+    {
+      "Subject": "Ukrainian Computer Emergency Response Team(CERT-UA)(Organization)",
+      "Relation": "Detect",
+      "Object": "Phishing Campaign(Tactic)",
+      "SentenceNums": [
+        15
+      ]
+    },
+    {
+      "Subject": "TA445(Threat Actor)",
+      "Relation": "Operate",
+      "Object": "Belarus(Location)",
+      "SentenceNums": [
+        21
+      ]
+    },
+    {
+      "Subject": "Russian Military(Organization)",
+      "Relation": "Use",
+      "Object": "Hybrid Warfare Model(Tactic)",
+      "SentenceNums": [
+        23
+      ]
+    },
+    {
+      "Subject": "Email(Infrastructure)",
+      "Relation": "Has URL",
+      "Object": "ukr[.](URL)",
+      "SentenceNums": [
+        25
+      ]
+    },
+    {
+      "Subject": "Email(Infrastructure)",
+      "Relation": "Has attachment",
+      "Object": "list of persons.xlsx(Filename)",
+      "SentenceNums": [
+        27
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Modify",
+      "Object": "Windows Installer(Security Tool)",
+      "SentenceNums": [
+        49
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Modify",
+      "Object": "UILevel(Registry)",
+      "SentenceNums": [
+        50
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "InstallProduct(Security Tool)",
+      "SentenceNums": [
+        51
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "LNK File(Filename)",
+      "SentenceNums": [
+        57
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "Lua Interpreter(Security Tool)",
+      "SentenceNums": [
+        57
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "Lua-Based Dependencies(Security Tool)",
+      "SentenceNums": [
+        57
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Locate at",
+      "Object": "C:\\ProgramData\\.security-soft(Filepath)",
+      "SentenceNums": [
+        62,
+        63
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "print.lua(Filename)",
+      "SentenceNums": [
+        65
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Has value",
+      "Object": "7bf33b494c70bd0a0a865b5fbcee0c58fa9274b8741b03695b45998bcd459328(Hash)",
+      "SentenceNums": [
+        73
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "Lua Socket(Security Tool)",
+      "SentenceNums": [
+        98
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "HTTP Protocol(Platform)",
+      "SentenceNums": [
+        98
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "C Drive Partition Serial Number(System)",
+      "SentenceNums": [
+        100
+      ]
+    },
+    {
+      "Subject": "TA445(Threat Actor)",
+      "Relation": "Target",
+      "Object": "European Governments(Organization)",
+      "SentenceNums": [
+        108
+      ]
+    },
+    {
+      "Subject": "TA445(Threat Actor)",
+      "Relation": "Target",
+      "Object": "NATO Member Countries(Location)",
+      "SentenceNums": [
+        113
+      ]
+    },
+    {
+      "Subject": "TA445(Threat Actor)",
+      "Relation": "Use",
+      "Object": "GoPhish(Security Tool)",
+      "SentenceNums": [
+        131
+      ]
+    },
+    {
+      "Subject": "TA445(Threat Actor)",
+      "Relation": "Use",
+      "Object": "MSI Packages(Security Tool)",
+      "SentenceNums": [
+        132
+      ]
+    },
+    {
+      "Subject": "TA445(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Lua Based Malware(Malware)",
+      "SentenceNums": [
+        133
+      ]
+    },
+    {
+      "Subject": "TA445(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Compromised Sender Infrastructure(Infrastructure)",
+      "SentenceNums": [
+        134
+      ]
+    },
+    {
+      "Subject": "Email(Infrastructure)",
+      "Relation": "Has attachment",
+      "Object": "list of participants of the briefing.xls(Filename)",
+      "SentenceNums": [
+        139
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "WiX Toolset 3.11.0.1528(Security Tool)",
+      "SentenceNums": [
+        140
+      ]
+    },
+    {
+      "Subject": "Email(Infrastructure)",
+      "Relation": "Has URL",
+      "Object": "ukr[.](URL)",
+      "SentenceNums": [
+        159
+      ]
+    },
+    {
+      "Subject": "Email(Infrastructure)",
+      "Relation": "Has subject",
+      "Object": "IN ACCORDANCE WITH THE DECISION OF THE EMERGENCY MEETING OF THE SECURITY COUNCIL OF UKRAINE DATED 24.02.2022(Filename)",
+      "SentenceNums": [
+        163
+      ]
+    },
+    {
+      "Subject": "Email(Infrastructure)",
+      "Relation": "Has attachment",
+      "Object": "list of persons.xls(Filename)",
+      "SentenceNums": [
+        165
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "qwerty_setup.msi(Filename)",
+      "SentenceNums": [
+        169
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Has value",
+      "Object": "7bf33b494c70bd0a0a865b5fbcee0c58fa9274b8741b03695b45998bcd459328(Hash)",
+      "SentenceNums": [
+        172
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "luacom.dll(Filename)",
+      "SentenceNums": [
+        175
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "ltn12.lua(Filename)",
+      "SentenceNums": [
+        177
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "mime.lua(Filename)",
+      "SentenceNums": [
+        178
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "http.lua(Filename)",
+      "SentenceNums": [
+        179
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "socket.dll(Filename)",
+      "SentenceNums": [
+        180
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "mime.dll(Filename)",
+      "SentenceNums": [
+        181
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "lua5.1.dll(Filename)",
+      "SentenceNums": [
+        182
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "url.lua(Filename)",
+      "SentenceNums": [
+        183
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "sppsvc.exe(Filename)",
+      "SentenceNums": [
+        184
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "tp.lua(Filename)",
+      "SentenceNums": [
+        185
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "socket.lua(Filename)",
+      "SentenceNums": [
+        187
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Use",
+      "Object": "Software Protection Service.lnk(Filename)",
+      "SentenceNums": [
+        188
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Locate at",
+      "Object": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Software Protection Service.lnk(Filepath)",
+      "SentenceNums": [
+        190
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Locate at",
+      "Object": "C:\\ProgramData\\.security-soft(Filepath)",
+      "SentenceNums": [
+        192
+      ]
+    },
+    {
+      "Subject": "SunSeed(Malware)",
+      "Relation": "Has URL",
+      "Object": "hxxp://84.32.188[.](URL)",
+      "SentenceNums": [
+        193
+      ]
+    }
+  ],
+  "id": "TA-00000004",
+  "file_name": "Asylum Ambuscade_ State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Movement _ Proofpoint US",
+  "sentences": {
+    "1": "Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…",
+    "3": "proofpoint.com/us/blog/threat-insight/asylum-ambuscade-state-actor-uses-compromised-private-ukrainian-",
+    "4": "military-emails",
+    "7": "March 01, 2022 Michael Raggi, Zydeca Cass and the Proofpoint Threat Research Team",
+    "9": "Proofpoint has identified a likely nation-state sponsored phishing campaign using apossibly compromised Ukrainian armed service member’s email account to targetEuropean government personnel involved in managing the logistics of refugeesfleeing Ukraine.The email included a malicious macro attachment which attempted to download aLua-based malware dubbed SunSeed.The infection chain used in this campaign bears significant similarities to a historiccampaign Proofpoint observed in July 2021, making it likely the same threat actor isbehind both clusters of activity.Proofpoint is releasing this report in an effort to balance accuracy withresponsibility to disclose actionable intelligence during a time of high-tempoconflict.",
+    "13": "Proofpoint researchers have identified a phishing campaign originating from an emailaddress (ukr[.",
+    "15": "This discovery comes on the heels of alerts by the Ukrainian ComputerEmergency Response Team (CERT-UA) and the State Service of Special Communicationsand Information Protection of Ukraine about widespread phishing campaigns targetingprivate email accounts of Ukrainian armed service members by ‘UNC1151’, whichProofpoint tracks as part of TA445.",
+    "21": "TA445, which appears to operate out of Belarus, specifically hasa history of engaging in a significant volume of disinformation operations intended tomanipulate European sentiment around the movement of refugees within NATOcountries.",
+    "23": "This approach isa known factor within the hybrid warfare model employed by the Russian military and byextension that of Belarus.",
+    "25": "On February 24, 2022, Proofpoint detected an email originating from a ukr[.",
+    "27": "The email utilized the subject\"IN ACCORDANCE WITH THE DECISION OF THE EMERGENCY MEETING OF THESECURITY COUNCIL OF UKRAINE DATED 24.02.2022\" and included a macro enabledXLS file titled “list of persons.xlsx,” which was later determined to deliver SunSeedmalware.",
+    "49": "When enabled, it executes a VB macro named “Module1” which creates aWindows Installer (msiexec.exe) object invoking Windows Installer to call out to anactor-controlled staging IP and download a malicious MSI package.",
+    "50": "It also sets aMicrosoft document UILevel equal to “2” which specifies a user interface level of“completely silent installation.” This hides all macro actions and network connectionsfrom the user.",
+    "51": "The actor accesses the delivery IP via the MicrosoftInstaller InstallProduct method which is intended to obtain an MSI install file from aURL, save it to a cached location, and finally begin installation of the MSI package.",
+    "57": "Analysis of the actor-controlled delivery infrastructure identified an MSI package whichinstalled a series of Lua-based dependencies, executed a malicious Lua script thatProofpoint has dubbed SunSeed, and established persistence via an LNK file installed forautorun at Windows Startup.",
+    "62": "Asylum Ambuscade: State Actor Uses Compromised Private Ukrainian Military Emails to Target European Governments and Refugee Mo…",
+    "63": "soft\\.",
+    "65": "This executes the malicious SunSeed Lua script“print.lua” that attempts to retrieve additional malicious Lua code from the actorcommand and control (C2) server.",
+    "73": "print.lua|7bf33b494c70bd0a0a865b5fbcee0c58fa9274b8741b03695b45998bcd459328",
+    "98": "The SunSeed malware when executed issues GET requests over HTTP via port 80 using aLua Socket.",
+    "100": "The malware specifies the user agent as “LuaSocket 2.0.2” and appends theinfected target’s C Drive partition serial number to the URI request.",
+    "108": "The Proofpoint-observed email messageswere limited to European governmental entities.",
+    "113": "This campaign may represent an attempt to gain intelligence regarding thelogistics surrounding the movement of funds, supplies, and people within NATO membercountries.",
+    "131": "Use of GoPhish",
+    "132": "Use of MSI Packages",
+    "133": "Use of Lua Based Malware",
+    "134": "Use of Compromised SenderInfrastructure",
+    "139": "Similarly, the campaign utilized a very recent government report as the basis of thesocial engineering content and titled the malicious attachment “list of participants of thebriefing.xls.” In addition to the file name being quite similar to the Asylum Ambuscadecampaign, the Lua script created a nearly identical URI beacon to the SunSeed sample,which was composed of the infected victim’s C Drive partition serial number.",
+    "140": "Analysis ofthe cryptography calls in both samples revealed that the same version of WiX 3.11.0.1528had been utilized to create the MSI packages.",
+    "159": "<redacted>@ukr[.",
+    "163": "IN ACCORDANCE WITH THE DECISION OF THE EMERGENCY MEETINGOF THE SECURITY COUNCIL OF UKRAINE DATED 24.02.2022",
+    "165": "list of persons.xls1561ece482c78a2d587b66c8eaf211e806ff438e506fcef8f14ae367db82d9b3",
+    "169": "qwerty_setup.msi",
+    "172": "print.lua7bf33b494c70bd0a0a865b5fbcee0c58fa9274b8741b03695b45998bcd459328",
+    "175": "luacom.dllf97f26f9cb210c0fcf2b50b7b9c8c93192b420cdbd946226ec2848fd19a9af2c",
+    "177": "ltn12.luab1864aed85c114354b04fbe9b3f41c5ebc4df6d129e08ef65a0c413d0daabd29",
+    "178": "mime.luae9167e0da842a0b856cbe6a2cf576f2d11bcedb5985e8e4c8c71a73486f6fa5a",
+    "179": "http.luad10fbef2fe8aa983fc6950772c6bec4dc4f909f24ab64732c14b3e5f3318700c",
+    "180": "socket.dll3694f63e5093183972ed46c6bef5c63e0548f743a8fa6bb6983dcf107cab9044",
+    "181": "mime.dll976b7b17f2663fee38d4c4b1c251269f862785b17343f34479732bf9ddd29657",
+    "182": "lua5.1.dllfbbe7ee073d0290ac13c98b92a8405ea04dcc6837b4144889885dd70679e933f",
+    "183": "url.lua269526c11dbb25b1b4b13eec4e7577e15de33ca18afa70a2be5f373b771bd1ab",
+    "184": "sppsvc.exe737f08702f00e78dbe78acbeda63b73d04c1f8e741c5282a9aa1409369b6efa8",
+    "185": "tp.lua",
+    "187": "socket.lua15fd138a169cae80fecf4c797b33a257d587ed446f02ecf3ef913e307a22f96d",
+    "188": "Software Protection Service.lnk",
+    "190": "AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\SoftwareProtection Service.lnk",
+    "192": "C:\\ProgramData\\.security-soft",
+    "193": "hxxp://84.32.188[."
+  }
+}

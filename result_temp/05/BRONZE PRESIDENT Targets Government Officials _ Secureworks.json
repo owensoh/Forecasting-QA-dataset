@@ -1,0 +1,151 @@
+{
+  "events": [
+    {
+      "Subject": "Secureworks(Vender)",
+      "Relation": "Detect",
+      "Object": "PlugX(Malware)",
+      "SentenceNums": [
+        4
+      ]
+    },
+    {
+      "Subject": "Counter Threat UnitResearch Team(Author)",
+      "Relation": "Detect",
+      "Object": "PlugX(Malware)",
+      "SentenceNums": [
+        5
+      ]
+    },
+    {
+      "Subject": "BRONZE PRESIDENT(Threat Actor)",
+      "Relation": "Use",
+      "Object": "PlugX(Malware)",
+      "SentenceNums": [
+        5
+      ]
+    },
+    {
+      "Subject": "BRONZE PRESIDENT(Threat Actor)",
+      "Relation": "Belong to",
+      "Object": "Chinese government-sponsored(Threat Actor)",
+      "SentenceNums": [
+        7
+      ]
+    },
+    {
+      "Subject": "PlugX(Malware)",
+      "Relation": "Locate at",
+      "Object": "RAR archive files(Infrastructure)",
+      "SentenceNums": [
+        8
+      ]
+    },
+    {
+      "Subject": "PlugX(Malware)",
+      "Relation": "Modify",
+      "Object": "Windows shortcut (Filename)",
+      "SentenceNums": [
+        9
+      ]
+    },
+    {
+      "Subject": "PlugX(Malware)",
+      "Relation": "Modify",
+      "Object": "hidden folder(Filepath)",
+      "SentenceNums": [
+        13
+      ]
+    },
+    {
+      "Subject": "PlugX(Malware)",
+      "Relation": "Modify",
+      "Object": "Windows shortcut (Filename)",
+      "SentenceNums": [
+        19
+      ]
+    },
+    {
+      "Subject": "PlugX(Malware)",
+      "Relation": "Modify",
+      "Object": "legitimate file(Filename)",
+      "SentenceNums": [
+        20
+      ]
+    },
+    {
+      "Subject": "PlugX(Malware)",
+      "Relation": "Modify",
+      "Object": "encrypted payload file(Filename)",
+      "SentenceNums": [
+        21
+      ]
+    },
+    {
+      "Subject": "PlugX(Malware)",
+      "Relation": "Modify",
+      "Object": "malicious DLL(Filename)",
+      "SentenceNums": [
+        21
+      ]
+    },
+    {
+      "Subject": "desktop-n2v1smh(Registy)",
+      "Relation": "Has value",
+      "Object": "shortcut file metadata(Value)",
+      "SentenceNums": [
+        62
+      ]
+    },
+    {
+      "Subject": "desktop-cb248vr(Registy)",
+      "Relation": "Has value",
+      "Object": "shortcut file metadata(Value)",
+      "SentenceNums": [
+        62
+      ]
+    },
+    {
+      "Subject": "BRONZE PRESIDENT(Threat Actor)",
+      "Relation": "Use",
+      "Object": "decoy document(Filename)",
+      "SentenceNums": [
+        69
+      ]
+    },
+    {
+      "Subject": "BRONZE PRESIDENT(Threat Actor)",
+      "Relation": "Has geolocation",
+      "Object": "China(Location)",
+      "SentenceNums": [
+        70
+      ]
+    },
+    {
+      "Subject": "BRONZE PRESIDENT(Threat Actor)",
+      "Relation": "Operate",
+      "Object": "PlugX C2 server(Infrastructure)",
+      "SentenceNums": [
+        382,
+        384
+      ]
+    }
+  ],
+  "id": "TA-00000007",
+  "file_name": "BRONZE PRESIDENT Targets Government Officials _ Secureworks",
+  "sentences": {
+    "4": "The likely Chinese government-sponsored threat group uses decoy documents and PlugXmalware to compromise targets.",
+    "5": "Thursday, September 8, 2022 By: Counter Threat UnitResearch TeamIn June and July 2022, Secureworks® Counter Threat Unit™ (CTU) researchers identified aPlugX malware campaign targeting computers belonging to government officials of severalcountries in Europe, the Middle East, and South America.",
+    "7": "Several characteristics of thiscampaign indicate that it was conducted by the likely Chinese government-sponsoredBRONZE PRESIDENT threat group, including the use of PlugX, file paths and namingschemes previously used by the threat group, the presence of shellcode in executable fileheaders, and politically-themed decoy documents that align with regions where China hasinterests.",
+    "8": "The malware is embedded within RAR archive files.",
+    "9": "Opening the archive on a Windowscomputer with default settings displays a Windows shortcut (LNK) file (see Figure 1) thatmasquerades as a document.",
+    "13": "Alongside the shortcut is a hidden folder that contains the malware, embedded eight levelsdeep in a sequence of hidden folders named with special characters (see Figure 2).",
+    "19": "To execute the malware, the recipient must click the Windows shortcut file.",
+    "20": "The shortcutexecutes a renamed legitimate file contained in the eighth hidden folder.",
+    "21": "Alongside thelegitimate file is a malicious DLL and an encrypted payload file.",
+    "62": "In each sampleanalyzed by CTU researchers, the shortcut file metadata indicates the file was created on aWindows system either with hostname \"desktop-n2v1smh\" or \"desktop-cb248vr\".",
+    "69": "The political nature of the decoy documents suggests that the government officials of variouscountries are targets for BRONZE PRESIDENT's intelligence collection efforts (see Figures 4,5, and 6).",
+    "70": "The threat group consistently targets China's neighbors such as Myanmar andVietnam.",
+    "382": "PlugX C2 server",
+    "384": "PlugX C2 server"
+  }
+}

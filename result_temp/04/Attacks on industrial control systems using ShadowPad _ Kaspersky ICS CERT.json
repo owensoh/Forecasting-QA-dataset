@@ -1,0 +1,875 @@
+{
+  "events": [
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        1
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ShadowPad(Malware)",
+      "SentenceNums": [
+        7
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Detect",
+      "Object": "CVE-2021-26855(Vulnerability)",
+      "SentenceNums": [
+        13
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ShadowPad(Malware)",
+      "SentenceNums": [
+        15
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Mimikatz(Security Tool)",
+      "SentenceNums": [
+        15
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "AppLaunch.exe(Filename)",
+      "SentenceNums": [
+        15
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "mscoree.dll(Filename)",
+      "SentenceNums": [
+        15
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "CobaltStrike(Security Tool)",
+      "SentenceNums": [
+        16
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        17
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "GoDaddy.com(Domain)",
+      "SentenceNums": [
+        18
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Operate",
+      "Object": "C2 servers(Infrastructure)",
+      "SentenceNums": [
+        18
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ENOM(Domain)",
+      "SentenceNums": [
+        18
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "NameSilo(Domain)",
+      "SentenceNums": [
+        18
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Choopa(Infrastructure)",
+      "SentenceNums": [
+        19
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Operate",
+      "Object": "C2 servers(Infrastructure)",
+      "SentenceNums": [
+        19
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ShadowPad(Malware)",
+      "SentenceNums": [
+        26
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Detect",
+      "Object": "CVE-2021-26855(Vulnerability)",
+      "SentenceNums": [
+        29
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Detect",
+      "Object": "CVE-2021-26855(Vulnerability)",
+      "SentenceNums": [
+        30
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ShadowPad(Malware)",
+      "SentenceNums": [
+        31
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "mscoree.dll(Filename)",
+      "SentenceNums": [
+        31
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "AppLaunch.exe(Filename)",
+      "SentenceNums": [
+        31
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        34
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "mscoree.dll(Filename)",
+      "SentenceNums": [
+        35
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Detect",
+      "Object": "CVE-2021-26855(Vulnerability)",
+      "SentenceNums": [
+        36
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ShadowPad(Malware)",
+      "SentenceNums": [
+        37
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "OleView(Filename)",
+      "SentenceNums": [
+        38
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ShadowPad(Malware)",
+      "SentenceNums": [
+        38
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "IVIEWERS.dll(Filename)",
+      "SentenceNums": [
+        39
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ShadowPad(Malware)",
+      "SentenceNums": [
+        39
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "cmd.exe(Filename)",
+      "SentenceNums": [
+        44
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "cmd.exe(Filename)",
+      "SentenceNums": [
+        46
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        47
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "cmd.exe(Filename)",
+      "SentenceNums": [
+        56
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "reg.exe(Filename)",
+      "SentenceNums": [
+        57
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "winrar.exe(Filename)",
+      "SentenceNums": [
+        59
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "xerice.exe(Filename)",
+      "SentenceNums": [
+        60
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Mimikatz(Security Tool)",
+      "SentenceNums": [
+        67
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        75
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Belong to",
+      "Object": "Chinese-speaking group(Location)",
+      "SentenceNums": [
+        77
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "certutil.exe(Filename)",
+      "SentenceNums": [
+        82
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "CobaltStrike(Security Tool)",
+      "SentenceNums": [
+        82
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "certutil.exe(Filename)",
+      "SentenceNums": [
+        83
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "CobaltStrike(Security Tool)",
+      "SentenceNums": [
+        83
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "PlugX(Malware)",
+      "SentenceNums": [
+        88
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "bat file(Filename)",
+      "SentenceNums": [
+        92
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "bat file(Filename)",
+      "SentenceNums": [
+        94
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Belong to",
+      "Object": "HAFNIUM(Organization)",
+      "SentenceNums": [
+        95
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "webshell(Filename)",
+      "SentenceNums": [
+        96
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "webshell(Filename)",
+      "SentenceNums": [
+        98
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        101
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Operate",
+      "Object": "C2 servers(Infrastructure)",
+      "SentenceNums": [
+        104
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Choopa(Infrastructure)",
+      "SentenceNums": [
+        104
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "order.cargobussiness[.]site(Domain)",
+      "SentenceNums": [
+        107
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "documents.kankuedu[.]org(Domain)",
+      "SentenceNums": [
+        113
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "live.musicweb[.]xyz(Domain)",
+      "SentenceNums": [
+        119
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "obo.videocenter[.]org(Domain)",
+      "SentenceNums": [
+        123
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "tech.obj[.]services(Domain)",
+      "SentenceNums": [
+        126
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "houwags.defineyourid[.]site(Domain)",
+      "SentenceNums": [
+        133
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "noub.crabdance[.]com(Domain)",
+      "SentenceNums": [
+        137
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "grandfoodtony[.]com(Domain)",
+      "SentenceNums": [
+        144
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Belong to",
+      "Object": "Chinese-speaking group(Location)",
+      "SentenceNums": [
+        150
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        152
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Mimikatz(Security Tool)",
+      "SentenceNums": [
+        153
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Belong to",
+      "Object": "HAFNIUM(Organization)",
+      "SentenceNums": [
+        154
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Belong to",
+      "Object": "Chinese-speaking group(Location)",
+      "SentenceNums": [
+        156
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Belong to",
+      "Object": "PKPLUG(Organization)",
+      "SentenceNums": [
+        156
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ShadowPad(Malware)",
+      "SentenceNums": [
+        166
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ShadowPad(Malware)",
+      "SentenceNums": [
+        171
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        193
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "storage.ondriev[.]tk(Domain)",
+      "SentenceNums": [
+        194
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "api.onedriev[.]tk(Domain)",
+      "SentenceNums": [
+        197
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        245
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "PowerShell(Filename)",
+      "SentenceNums": [
+        250
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Scheduled Task(Technique)",
+      "SentenceNums": [
+        252
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "BITS Jobs(Technique)",
+      "SentenceNums": [
+        258
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "DLL Side-Loading(Technique)",
+      "SentenceNums": [
+        259
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Scheduled Task(Technique)",
+      "SentenceNums": [
+        262
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "BITS Jobs(Technique)",
+      "SentenceNums": [
+        265
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "DLL Side-Loading(Technique)",
+      "SentenceNums": [
+        272
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "File and Directory Discovery(Technique)",
+      "SentenceNums": [
+        276
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        277
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Network Service Scanning(Technique)",
+      "SentenceNums": [
+        280
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Query Registry(Technique)",
+      "SentenceNums": [
+        281
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Archive Collected Data(Technique)",
+      "SentenceNums": [
+        285
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Archive Collected Data(Technique)",
+      "SentenceNums": [
+        287
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Automated Collection(Technique)",
+      "SentenceNums": [
+        291
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Data from Local System(Technique)",
+      "SentenceNums": [
+        292
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Email Collection(Technique)",
+      "SentenceNums": [
+        293
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Application Layer Protocol(Technique)",
+      "SentenceNums": [
+        296
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Data Encoding(Technique)",
+      "SentenceNums": [
+        298
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Proxy(Technique)",
+      "SentenceNums": [
+        300
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Proxy(Technique)",
+      "SentenceNums": [
+        302
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Automated Exfiltration(Technique)",
+      "SentenceNums": [
+        306
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Exfiltration Over C2 Channel(Technique)",
+      "SentenceNums": [
+        308
+      ]
+    },
+    {
+      "Subject": "Threat Actor(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Exfiltration to Cloud Storage(Technique)",
+      "SentenceNums": [
+        310
+      ]
+    },
+    {
+      "Subject": "Kaspersky ICS CERT(Author)",
+      "Relation": "Construct",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        311
+      ]
+    },
+    {
+      "Subject": "Artem Snegirev(Author)",
+      "Relation": "Write",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        312
+      ]
+    },
+    {
+      "Subject": "Kirill Kruglov(Author)",
+      "Relation": "Write",
+      "Object": "Attacks on industrial control systems using ShadowPad(Report Type)",
+      "SentenceNums": [
+        315
+      ]
+    }
+  ],
+  "id": "TA-00000005",
+  "file_name": "Attacks on industrial control systems using ShadowPad _ Kaspersky ICS CERT",
+  "sentences": {
+    "1": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "7": "In mid-October 2021 Kaspersky ICS CERT researchers uncovered an active ShadowPadbackdoor infection on industrial control systems (ICS) in Pakistan.",
+    "13": "Some of the victim organizations were breached by exploiting the CVE-2021-26855vulnerability in Microsoft Exchange.",
+    "15": "From March to October 2021, the ShadowPad backdoor was downloaded to victimcomputers as the mscoree.dll file, which was launched by AppLaunch.exe – aperfectly legitimate application.Later the attackers launched ShadowPad using DLL hijacking in a legitimate OLE-COM object viewing application (OleView).After the initial infection the attackers first sent commands manually, thenautomatically.Other tools were also used:",
+    "16": "The CobaltStrike framework, which was downloaded to victim machines usingthe certutil.exe utility, compiled aspx web shells, and procdump and Mimikatztools;The PlugX backdoor;BAT files (for stealing credentials);Web shells (for remote access to the web server);The Nextnet utility (for scanning network hosts).",
+    "17": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "18": "The attackers used domains registered with NameSilo, GoDaddy.com and ENOM tocommunicate with the command-and-control (C2) servers.",
+    "19": "Most of the C2 servers werehosted on dedicated servers rented from Choopa.",
+    "26": "In mid-October 2021, Kaspersky ICS CERT experts discovered an active ShadowPadbackdoor that affected a number of industrial control systems in Pakistan, specificallyengineering computers in building automation systems that are part of a telecomcompany’s infrastructure.",
+    "29": "The attackers exploited a known vulnerability in MS Exchange, CVE-2021-26855, as theinitial attack vector in several victim organizations.",
+    "30": "We do not have evidence that CVE-2021-26855 was exploited in all cases of attack identified, but we can assume that theattackers could use this particular vector to penetrate in other cases, as well.",
+    "31": "ShadowPad",
+    "34": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "35": "Export table of the mscoree.dll (ShadowPad) maliciouis DLL",
+    "36": "In some of the cases we studied at the same time, we found that a ShadowPad sample thathad the same name and launching scheme was executed by exploiting the MS ExchangeCVE-2021-26855 vulnerability.",
+    "37": "Since about mid-October 2021, a new ShadowPad launching scheme and a new version ofthe malware has been used targeting the same organizations.",
+    "38": "Instead of usingmscoree.dll, the attackers switched to using the dll hijacking technique in legitimatesoftware for viewing OLE-COM objects (OleView).",
+    "39": "The legitimate OleView applicationdownloads the malicious IVIEWERS.dll library, which in turn downloads and executesthe ShadowPad payload contained in IVIEWERS.dll.dat.",
+    "44": "We found that on a subset of computers (at least one in each attacked organization’snetwork), some series of commands had been remotely executed via the command lineinterface (cmd.exe).",
+    "46": "The list of commands executed by the attackers manually is shown in the originalsequence in the table below.",
+    "47": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "56": "cmd.exe m1.log",
+    "57": "reg.exe save hklm\\sam sam.hive",
+    "59": "winrar.exe a -r -ep1 -p3210 -m5 -s  -iback nat temp",
+    "60": "$windir\\appcompat\\programs\\xerice.exe10.251.115.0/24",
+    "67": "launch Trojan-PSW.Win32.Mimikatz",
+    "75": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "77": "It is important to note that this part of the TTPs is quite unique and we believe it supportsattributing all cases of similar activity to one Chinese-speaking group of attackers.",
+    "82": "The attackers used CobaltStrike, which was downloaded to the victim’s computer usingthe certutil.exe utility, compiled aspx webshells, the procdump tool, and Mimikatz.",
+    "83": "CobaltStrike was downloaded using the following command:",
+    "88": "In addition to the ShadowPad backdoor, activity associated with downloading aro.dat, avariant of the PlugX backdoor, using bitsadmin was identified on the server of one of thevictims.",
+    "92": "Bat file for credential theft",
+    "94": "Bat file found on a victim’s server",
+    "95": "The contents of this file are very similar to the bat file described in a VB article, whichmentions that the script was used by the Chinese group HAFNIUM.",
+    "96": "Webshell",
+    "98": "These are compiled .NETAssembly files for aspx scripts used by the actor for remote access to the web server(webshell).",
+    "101": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "104": "The ShadowPad CnC servers found are mostly hosted on rented dedicated Choopaservers.",
+    "107": "order.cargobussiness[.",
+    "113": "documents.kankuedu[.",
+    "119": "live.musicweb[.",
+    "123": "obo.videocenter[.",
+    "126": "tech.obj[.",
+    "133": "houwags.defineyourid[.",
+    "137": "noub.crabdance[.",
+    "144": "grandfoodtony[.",
+    "150": "We believe with a high degree of confidence that a Chinese-speaking threat actor isbehind the activity described in this report.",
+    "152": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "153": "The Mimikatz utility (m1.log, SHA256:30a78770615c6b42c17900c4ad03a9b708dc2d9b743bbdc51218597518749382),which was identified during our investigation on computers of organizations inPakistan, Malaysia, and Afghanistan, was also mentioned in a Symantec report.",
+    "154": "Thereport also claims that the threat actor HAFNIUM was involved in attacksexploiting a Microsoft Exchange Server vulnerability.In addition, a bat file for stealing NTLM hashes of accounts was found on a server ofone of the victims.",
+    "156": "Activity related to downloading the PlugX backdoor (aro.dat), which occurred on theserver of one of the victims, was analyzed in the Palo Alto Networks report, which allegesthe involvement of a Chinese group known as PKPLUG.",
+    "166": "ShadowPad (mscoree.dll)",
+    "171": "ShadowPad (iviewers.dll)",
+    "193": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "194": "storage.ondriev[.",
+    "197": "api.onedriev[.",
+    "245": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "250": "T1059.001 Command and Scripting Interpreter: PowerShell",
+    "252": "T1053.005 Scheduled Task",
+    "258": "BITS Jobs The attacker uses a BITS job to download additionalpayloads.",
+    "259": "T1574.002 Hijack Execution Flow: DLL Side-Loading",
+    "262": "The attacker creates scheduled tasks to set up dailyexecution of malicious payloads.",
+    "265": "BITS Jobs The attacker uses a BITS job to download additionalpayloads.",
+    "272": "T1574.002 Hijack Execution Flow: DLL Side-Loading",
+    "276": "File and Directory Discovery The attacker lists files and directories available on infectedsystems.",
+    "277": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "280": "T1046",
+    "281": "T1012",
+    "285": "T1560.002 Archive Collected Data: Archive via Utility",
+    "287": "T1560.002 Archive Collected Data: Archive via Library",
+    "291": "Automated Collection The attacker automatically collects a list of files andconnected USB devices.",
+    "292": "Data from Local System The attacker uses a PowerShell script to collect Officedocuments on the local system.",
+    "293": "T1114.001 Email Collection: Local Email Collection",
+    "296": "T1071.001 Application Layer Protocol: Web Protocols",
+    "298": "T1132.001 Data Encoding: Standard Encoding",
+    "300": "T1090.001 Proxy: Internal Proxy",
+    "302": "T1090.002 Proxy: External Proxy",
+    "306": "Automated Exfiltration The attacker can automatically exfiltrate Office documents.",
+    "308": "Exfiltration Over C2 Channel The attacker exfiltrates data over the C2 channel.",
+    "310": "Storage The attacker exfiltrates data to Google Drive.",
+    "311": "Attacks on industrial control systems using ShadowPad | Kaspersky ICS CERT",
+    "312": "Authors",
+    "315": "Kirill Kruglov"
+  }
+}

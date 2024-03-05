@@ -1,0 +1,16 @@
+{
+  "Reconnaissance": "None",
+  "Resource Development": "None",
+  "Initial Access": "None",
+  "Execution": "None",
+  "Persistence": "None",
+  "Privilege Escalation": "None",
+  "Defense Evasion": "The attackers used a variety of off-the-shelf tools, as well as leveraging living-off-the-land tools such as PowerShell, WMIC, ProcDump, LSASS, and PsExec. The legitimate AnyDesk tool was also abused by the attackers for remote access in one of the victim organizations. The attackers were also observed leveraging exploits such as CVE-2019-1458 for privilege escalation and remote scheduled tasks to execute their backdoor. The attackers also spent a significant amount of time on victim networks, affording plenty of time to seek out and exfiltrate potentially sensitive information from infected organizations. The targeting of Taiwan is perhaps unsurprising given we know Chinese state-backed groups tend to be interested in organizations in that region.",
+  "Credential Access": "None",
+  "Discovery": "None",
+  "Lateral Movement": "None",
+  "Collection": "The attackers spent a significant amount of time on victimsâ networks, and deployed both custom and off-the-shelf malware. In one financial sector victim in Taiwan, the attackers spent almost nine months on the victim network. The attackers used the xPack backdoor to launch a command prompt to execute various commands, change the code page to Traditional Chinese, list logged-in users, get a list of running processes, list contents of directories, and dump credentials from the registry. The attackers also used legitimate versions of WinRAR to exploit for data exfiltration, as well as PowerShell and batch scripts for data collection and staging. The attackers were interested in collecting information from software pertaining to business contacts, investments, and smart card readers.",
+  "Command and Control": "None",
+  "Exfiltration": "None",
+  "Impact": "Antlion is believed to have been involved in espionage activities since at least 2011, and this recent activity shows that it is still an actor to be aware of more than 10 years after it first appeared. The length of time that Antlion was able to spend on victim networks is notable, with the group able to spend several months on victim networks, affording plenty of time to seek out and exfiltrate potentially sensitive information from infected organizations. The targeting of Taiwan is perhaps unsurprising given we know Chinese state-backed groups tend to be interested in organizations in that region."
+}

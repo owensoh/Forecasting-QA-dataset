@@ -1,0 +1,452 @@
+{
+  "events": [
+    {
+      "Subject": "Date(Date)",
+      "Relation": "Belong to",
+      "Object": "UNC2596 Observed Leveraging Vulnerabilities to Deploy Cuba Ransomware(Report Type)",
+      "SentenceNums": [
+        0
+      ]
+    },
+    {
+      "Subject": "Mandiant(Author)",
+      "Relation": "Detect",
+      "Object": "Cuba Ransomware(Malware)",
+      "SentenceNums": [
+        1
+      ]
+    },
+    {
+      "Subject": "mandiant.com(URL)",
+      "Relation": "Has URL",
+      "Object": "UNC2596-Cuba-Ransomware(Report Type)",
+      "SentenceNums": [
+        3
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "COLDDRAW(Malware)",
+      "SentenceNums": [
+        5
+      ]
+    },
+    {
+      "Subject": "Mandiant(Vender)",
+      "Relation": "Detect",
+      "Object": "COLDDRAW(Malware)",
+      "SentenceNums": [
+        5
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ProxyLogon(Vulnerability)",
+      "SentenceNums": [
+        6
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "ProxyShell(Vulnerability)",
+      "SentenceNums": [
+        6
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Microsoft Exchange(Vulnerable Software)",
+      "SentenceNums": [
+        6
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "NetSupport(Security Tool)",
+      "SentenceNums": [
+        9
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "TERMITE(Malware)",
+      "SentenceNums": [
+        9
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Cobalt Strike BEACON(Malware)",
+      "SentenceNums": [
+        9
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "WEDGECUT(Malware)",
+      "SentenceNums": [
+        10
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "BUGHATCH(Malware)",
+      "SentenceNums": [
+        10
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "BURNTCIGAR(Malware)",
+      "SentenceNums": [
+        10
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Operate",
+      "Object": "shaming website(URL)",
+      "SentenceNums": [
+        11
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Microsoft Exchange(Vulnerable Software)",
+      "SentenceNums": [
+        34
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "TERMITE(Malware)",
+      "SentenceNums": [
+        38
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "NetSupport RAT(Malware)",
+      "SentenceNums": [
+        38
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "BEACON(Malware)",
+      "SentenceNums": [
+        38
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "BUGHATCH(Malware)",
+      "SentenceNums": [
+        38
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Mimikatz(Security Tool)",
+      "SentenceNums": [
+        42
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "WICKER(Malware)",
+      "SentenceNums": [
+        42
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "check.exe(Filename)",
+      "SentenceNums": [
+        47
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "comps2.ps1(Filename)",
+      "SentenceNums": [
+        48
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "shar.bat(Filename)",
+      "SentenceNums": [
+        50
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "RDP(Platform)",
+      "SentenceNums": [
+        77
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "PsExec(Security Tool)",
+      "SentenceNums": [
+        77
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "SMB(Platform)",
+      "SentenceNums": [
+        77
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "BURNTCIGAR(Malware)",
+      "SentenceNums": [
+        85
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "av.bat(Filename)",
+      "SentenceNums": [
+        85
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "WEDGECUT(Malware)",
+      "SentenceNums": [
+        108
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "BUGHATCH(Malware)",
+      "SentenceNums": [
+        113
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "BURNTCIGAR(Malware)",
+      "SentenceNums": [
+        117
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "aswArPot.sys(Filename)",
+      "SentenceNums": [
+        119
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "aswSP_ArPot2(Filename)",
+      "SentenceNums": [
+        119
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "COLDDRAW(Malware)",
+      "SentenceNums": [
+        234
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "TERMITE(Malware)",
+      "SentenceNums": [
+        238
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "komar.dll(Filename)",
+      "SentenceNums": [
+        241
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "rundll32.exe(Filename)",
+      "SentenceNums": [
+        241
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "PowerShell(Platform)",
+      "SentenceNums": [
+        325
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Service Execution(Technique)",
+      "SentenceNums": [
+        327
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Remote Desktop Protocol(Technique)",
+      "SentenceNums": [
+        329
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "SSH(Technique)",
+      "SentenceNums": [
+        330
+      ]
+    },
+    {
+      "Subject": "UNC2596(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Credentials from Web Browsers(Technique)",
+      "SentenceNums": [
+        332
+      ]
+    },
+    {
+      "Subject": "Mandiant(Author)",
+      "Relation": "Detect",
+      "Object": "TERMITE(Malware)",
+      "SentenceNums": [
+        336,
+        342
+      ]
+    },
+    {
+      "Subject": "Mandiant(Author)",
+      "Relation": "Detect",
+      "Object": "WEDGECUT(Malware)",
+      "SentenceNums": [
+        340
+      ]
+    },
+    {
+      "Subject": "Mandiant(Author)",
+      "Relation": "Detect",
+      "Object": "BURNTCIGAR(Malware)",
+      "SentenceNums": [
+        343,
+        346
+      ]
+    },
+    {
+      "Subject": "Mandiant(Author)",
+      "Relation": "Detect",
+      "Object": "BUGHATCH(Malware)",
+      "SentenceNums": [
+        347,
+        350
+      ]
+    },
+    {
+      "Subject": "Mandiant(Author)",
+      "Relation": "Detect",
+      "Object": "COLDDRAW(Malware)",
+      "SentenceNums": [
+        351,
+        356
+      ]
+    },
+    {
+      "Subject": "Mandiant(Author)",
+      "Relation": "Detect",
+      "Object": "CHANITOR(Malware)",
+      "SentenceNums": [
+        360,
+        364
+      ]
+    }
+  ],
+  "id": "TA-00000000",
+  "file_name": "(Ex)Change of Pace_ UNC2596 Observed Leveraging Vulnerabilities to Deploy Cuba Ransomware _ Mandiant",
+  "sentences": {
+    "0": "3/2/22, 10:45 AM",
+    "1": "(Ex)Change of Pace: UNC2596 Observed Leveraging Vulnerabilities to Deploy Cuba Ransomware | Mandiant",
+    "3": "mandiant.com/resources/unc2596-cuba-ransomware",
+    "5": "UNC2596, a threat actor that deploysCOLDDRAW ransomware, publicly known as Cuba Ransomware, exemplifies this trend.",
+    "6": "While public reporting has highlighted CHANITOR campaigns as precursor for theseransomware incidents, Mandiant has also identified the exploitation of Microsoft Exchange vulnerabilities, including ProxyShell and ProxyLogon, as another access point leveraged byUNC2596 likely as early as August 2021.",
+    "9": "During intrusions, thesethreat actors have used webshells to load the TERMITE in-memory dropper with subsequent activity involving multiple backdoors and built-in Windows utilities.",
+    "10": "Beyondcommonplace tools, like Cobalt Strike BEACON and NetSupport, UNC2596 has used novel malware, including BURNTCIGAR to disable endpoint protection, WEDGECUT toenumerate active hosts, and the BUGHATCH custom downloader.",
+    "11": "In incidents where COLDDRAW was deployed, UNC2596 used a multi-faceted extortion model where data is stolenand leaked on the group's shaming website, in addition to encryption using COLDDRAW ransomware.",
+    "34": "Mandiant has observed UNC2596 frequently leverage vulnerabilities affecting public-facing Microsoft Exchange infrastructure as an initial compromise vector in recent COLDDRAWintrusions s where the initial vector was identified.",
+    "38": "Mandiant has also observed these actors deploy a variety of backdoors to establish a foothold, including the publicly available NetSupport RAT, as well as BEACONand BUGHATCH, which have been deployed using the TERMITE in-memory dropper.",
+    "42": "In some cases, the source of these credentials is unknown,while in other cases, UNC2596 leveraged credential theft tools such as Mimikatz and WICKER.",
+    "47": "The threat actors have used WEDGECUT, a reconnaissance tool typically with the filename check.exe.",
+    "48": "It identifies active hosts by sending PINGrequests to a list of hosts generated by a PowerShell script named comps2.ps1 which uses the Get-ADComputer cmdlet to enumerate the Active Directory.",
+    "50": "Additionally, UNC2596 has routinely used a script named shar.bat to map all drives to network shares, which may assistin user file discovery (Figure 4).",
+    "77": "During COLDDRAW incidents, UNC2596 actors have used several methods for lateral movement including RDP, SMB, and PsExec, frequently using BEACON to facilitate thismovement.",
+    "85": "During a more recent intrusion involving COLDDRAW, UNC2596 deployed the BURNTCIGAR utility using a batchscript named av.bat.",
+    "108": "WEDGECUT",
+    "113": "BUGHATCH is a downloader that executes arbitrary code on the compromised system downloaded from a C&C server.",
+    "117": "BURNTCIGAR is a utility that terminates processes at the kernel level by exploiting an Avast driver’s undocumented IOCTL code (Table 1).",
+    "119": "Wehave observed a batch script launcher that creates and starts a kernel service called aswSP_ArPot2 loading binary file C:\\windows\\temp\\aswArPot.sys (legitimate Avast driver withSHA256 hash 4b5229b3250c8c08b98cb710d6c056144271de099a57ae09f5d2097fc41bd4f1).",
+    "234": "COLDDRAW is the name Mandiant uses to track the ransomware observed in Cuba Ransomware operations.",
+    "238": "TERMITE is a password-protected memory-only dropper which contains an encrypted shellcode payload.",
+    "241": "Rundll32.exe c:\\windows\\temp\\komar.dll,ClearMyTracksByProcess 11985756",
+    "325": "   T1059.001:    PowerShell",
+    "327": "   T1569.002:    Service Execution",
+    "329": "   T1021.001:    Remote Desktop Protocol",
+    "330": "   T1021.004:    SSH",
+    "332": "   T1555.003:    Credentials from Web Browsers",
+    "336": "In addition to previously released Actions, the Mandiant Security Validation (Validation) Behavior Research Team (BRT) has created VHR20220223, which will also be released today,for tactics associated with UNC2596.",
+    "340": "A102-558, Malicious File Transfer - WEDGECUT, Download, Variant #1",
+    "342": "A102-556, Malicious File Transfer - TERMITE, Download, Variant #1",
+    "343": "A102-555, Malicious File Transfer - BURNTCIGAR, Download, Variant #4",
+    "346": "A102-552, Malicious File Transfer - BURNTCIGAR, Download, Variant #1",
+    "347": "A102-572, Malicious File Transfer - BUGHATCH, Download, Variant #4",
+    "350": "A102-549, Malicious File Transfer - BUGHATCH, Download, Variant #1",
+    "351": "A101-830 Command and Control - COLDDRAW, DNS Query",
+    "356": "A101-835 Malicious File Transfer - COLDDRAW, Download, Variant #6",
+    "360": "A100-308 Malicious File Transfer - CHANITOR, Download",
+    "364": "A150-306 Malicious File Transfer - CHANITOR, Download, Variant #1"
+  }
+}

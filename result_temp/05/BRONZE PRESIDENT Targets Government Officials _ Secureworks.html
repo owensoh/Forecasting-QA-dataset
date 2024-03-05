@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 1800px;
+                 height: 1200px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_0", "label": "Detect\n4", "sent_nums": [4], "shape": "triangle", "size": 10, "tactic": "Exfiltration", "technique": "Exfiltration-Others", "type": "event", "x": 0, "y": 0.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "PlugX(Malware)", "label": "PlugX(Malware)", "shape": "dot", "size": 10, "type": "entity", "x": 622.2222222222222, "y": 450.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_1", "label": "Detect\n5", "sent_nums": [5], "shape": "triangle", "size": 10, "tactic": "Impact", "technique": "Impact-Others", "type": "event", "x": 200, "y": 50.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_2", "label": "Use\n5", "sent_nums": [5], "shape": "triangle", "size": 10, "tactic": "Impact", "technique": "Impact-Others", "type": "event", "x": 200, "y": -50.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Secureworks(Vender)", "label": "Secureworks(Vender)", "shape": "dot", "size": 10, "type": "entity", "x": 0.0, "y": 450.0}, {"color": "#97c2fc", "depth": 2, "font_size": 8, "id": "RAR archive files(Infrastructure)", "label": "RAR archive files(Infrastructure)", "shape": "dot", "size": 10, "type": "entity", "x": 622.2222222222222, "y": 550.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Modify_3", "label": "Modify\n9", "sent_nums": [9], "shape": "triangle", "size": 10, "tactic": "Exfiltration", "technique": "Exfiltration-Others", "type": "event", "x": 400, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Modify_4", "label": "Modify\n13", "sent_nums": [13], "shape": "triangle", "size": 10, "tactic": "Exfiltration", "technique": "Exfiltration-Others", "type": "event", "x": 600, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Modify_5", "label": "Modify\n19", "sent_nums": [19], "shape": "triangle", "size": 10, "tactic": "Exfiltration", "technique": "Exfiltration-Others", "type": "event", "x": 800, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Modify_6", "label": "Modify\n20", "sent_nums": [20], "shape": "triangle", "size": 10, "tactic": "Exfiltration", "technique": "Exfiltration-Others", "type": "event", "x": 1000, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Modify_7", "label": "Modify\n21", "sent_nums": [21], "shape": "triangle", "size": 10, "tactic": "Exfiltration", "technique": "Exfiltration-Others", "type": "event", "x": 1200, "y": 50.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Modify_8", "label": "Modify\n21", "sent_nums": [21], "shape": "triangle", "size": 10, "tactic": "Exfiltration", "technique": "Exfiltration-Others", "type": "event", "x": 1200, "y": -50.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Exfiltration", "label": "Exfiltration", "shape": "star", "size": 10, "type": "tactic", "x": 0.0, "y": -250.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Exfiltration-Others", "label": "Exfiltration-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 0.0, "y": -150.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_9", "label": "Use\n69", "sent_nums": [69], "shape": "triangle", "size": 10, "tactic": "Exfiltration", "technique": "Exfiltration-Others", "type": "event", "x": 1400, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Operate_10", "label": "Operate\n382 384", "sent_nums": [382, 384], "shape": "triangle", "size": 10, "tactic": "Exfiltration", "technique": "Exfiltration-Others", "type": "event", "x": 1600, "y": 0.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Counter Threat UnitResearch Team(Author)", "label": "Counter Threat UnitResearch Team(Author)", "shape": "dot", "size": 10, "type": "entity", "x": 200.0, "y": 450.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Impact", "label": "Impact", "shape": "star", "size": 10, "type": "tactic", "x": 800.0, "y": -250.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Impact-Others", "label": "Impact-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 800.0, "y": -150.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "BRONZE PRESIDENT(Threat Actor)", "label": "BRONZE PRESIDENT(Threat Actor)", "shape": "dot", "size": 10, "type": "entity", "x": 1066.6666666666667, "y": 450.0}, {"color": "#97c2fc", "depth": 2, "font_size": 8, "id": "Chinese government-sponsored(Threat Actor)", "label": "Chinese government-sponsored(Threat Actor)", "shape": "dot", "size": 10, "type": "entity", "x": 1166.6666666666667, "y": 550.0}, {"color": "#97c2fc", "depth": 2, "font_size": 8, "id": "China(Location)", "label": "China(Location)", "shape": "dot", "size": 10, "type": "entity", "x": 966.6666666666667, "y": 550.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Windows shortcut (Filename)", "label": "Windows shortcut (Filename)", "shape": "dot", "size": 10, "type": "entity", "x": 700.0, "y": 450.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "hidden folder(Filepath)", "label": "hidden folder(Filepath)", "shape": "dot", "size": 10, "type": "entity", "x": 500.0, "y": 450.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "legitimate file(Filename)", "label": "legitimate file(Filename)", "shape": "dot", "size": 10, "type": "entity", "x": 1000.0, "y": 450.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "encrypted payload file(Filename)", "label": "encrypted payload file(Filename)", "shape": "dot", "size": 10, "type": "entity", "x": 1300.0, "y": 450.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "malicious DLL(Filename)", "label": "malicious DLL(Filename)", "shape": "dot", "size": 10, "type": "entity", "x": 1100.0, "y": 450.0}, {"color": "#97c2fc", "font_size": 8, "id": "desktop-n2v1smh(Registy)", "label": "desktop-n2v1smh(Registy)", "shape": "dot", "size": 10, "type": "entity"}, {"color": "#97c2fc", "font_size": 8, "id": "shortcut file metadata(Value)", "label": "shortcut file metadata(Value)", "shape": "dot", "size": 10, "type": "entity"}, {"color": "#97c2fc", "font_size": 8, "id": "desktop-cb248vr(Registy)", "label": "desktop-cb248vr(Registy)", "shape": "dot", "size": 10, "type": "entity"}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "decoy document(Filename)", "label": "decoy document(Filename)", "shape": "dot", "size": 10, "type": "entity", "x": 1400.0, "y": 450.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "PlugX C2 server(Infrastructure)", "label": "PlugX C2 server(Infrastructure)", "shape": "dot", "size": 10, "type": "entity", "x": 1600.0, "y": 450.0}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Detect_0", "label": "Object", "relation": "Object", "to": "PlugX(Malware)", "width": 1}, {"arrows": "to", "from": "Detect_0", "to": "Detect_1", "width": 1}, {"arrows": "to", "from": "Detect_0", "to": "Use_2", "width": 1}, {"arrows": "to", "from": "Secureworks(Vender)", "label": "Subject", "relation": "Subject", "to": "Detect_0", "width": 1}, {"arrows": "to", "from": "PlugX(Malware)", "label": "Locate at", "relation": "Locate at", "to": "RAR archive files(Infrastructure)", "width": 1}, {"arrows": "to", "from": "PlugX(Malware)", "label": "Subject", "relation": "Subject", "to": "Modify_3", "width": 1}, {"arrows": "to", "from": "PlugX(Malware)", "label": "Subject", "relation": "Subject", "to": "Modify_4", "width": 1}, {"arrows": "to", "from": "PlugX(Malware)", "label": "Subject", "relation": "Subject", "to": "Modify_5", "width": 1}, {"arrows": "to", "from": "PlugX(Malware)", "label": "Subject", "relation": "Subject", "to": "Modify_6", "width": 1}, {"arrows": "to", "from": "PlugX(Malware)", "label": "Subject", "relation": "Subject", "to": "Modify_7", "width": 1}, {"arrows": "to", "from": "PlugX(Malware)", "label": "Subject", "relation": "Subject", "to": "Modify_8", "width": 1}, {"arrows": "to", "from": "Exfiltration", "to": "Exfiltration-Others", "width": 1}, {"arrows": "to", "from": "Exfiltration-Others", "to": "Detect_0", "width": 1}, {"arrows": "to", "from": "Exfiltration-Others", "to": "Modify_3", "width": 1}, {"arrows": "to", "from": "Exfiltration-Others", "to": "Modify_4", "width": 1}, {"arrows": "to", "from": "Exfiltration-Others", "to": "Modify_5", "width": 1}, {"arrows": "to", "from": "Exfiltration-Others", "to": "Modify_6", "width": 1}, {"arrows": "to", "from": "Exfiltration-Others", "to": "Modify_7", "width": 1}, {"arrows": "to", "from": "Exfiltration-Others", "to": "Modify_8", "width": 1}, {"arrows": "to", "from": "Exfiltration-Others", "to": "Use_9", "width": 1}, {"arrows": "to", "from": "Exfiltration-Others", "to": "Operate_10", "width": 1}, {"arrows": "to", "from": "Detect_1", "label": "Object", "relation": "Object", "to": "PlugX(Malware)", "width": 1}, {"arrows": "to", "from": "Detect_1", "to": "Modify_3", "width": 1}, {"arrows": "to", "from": "Counter Threat UnitResearch Team(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_1", "width": 1}, {"arrows": "to", "from": "Impact", "to": "Impact-Others", "width": 1}, {"arrows": "to", "from": "Impact-Others", "to": "Detect_1", "width": 1}, {"arrows": "to", "from": "Impact-Others", "to": "Use_2", "width": 1}, {"arrows": "to", "from": "Use_2", "label": "Object", "relation": "Object", "to": "PlugX(Malware)", "width": 1}, {"arrows": "to", "from": "Use_2", "to": "Modify_3", "width": 1}, {"arrows": "to", "from": "BRONZE PRESIDENT(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_2", "width": 1}, {"arrows": "to", "from": "BRONZE PRESIDENT(Threat Actor)", "label": "Belong to", "relation": "Belong to", "to": "Chinese government-sponsored(Threat Actor)", "width": 1}, {"arrows": "to", "from": "BRONZE PRESIDENT(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_9", "width": 1}, {"arrows": "to", "from": "BRONZE PRESIDENT(Threat Actor)", "label": "Has geolocation", "relation": "Has geolocation", "to": "China(Location)", "width": 1}, {"arrows": "to", "from": "BRONZE PRESIDENT(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Operate_10", "width": 1}, {"arrows": "to", "from": "Modify_3", "label": "Object", "relation": "Object", "to": "Windows shortcut (Filename)", "width": 1}, {"arrows": "to", "from": "Modify_3", "to": "Modify_4", "width": 1}, {"arrows": "to", "from": "Modify_4", "label": "Object", "relation": "Object", "to": "hidden folder(Filepath)", "width": 1}, {"arrows": "to", "from": "Modify_4", "to": "Modify_5", "width": 1}, {"arrows": "to", "from": "Modify_5", "label": "Object", "relation": "Object", "to": "Windows shortcut (Filename)", "width": 1}, {"arrows": "to", "from": "Modify_5", "to": "Modify_6", "width": 1}, {"arrows": "to", "from": "Modify_6", "label": "Object", "relation": "Object", "to": "legitimate file(Filename)", "width": 1}, {"arrows": "to", "from": "Modify_6", "to": "Modify_7", "width": 1}, {"arrows": "to", "from": "Modify_6", "to": "Modify_8", "width": 1}, {"arrows": "to", "from": "Modify_7", "label": "Object", "relation": "Object", "to": "encrypted payload file(Filename)", "width": 1}, {"arrows": "to", "from": "Modify_7", "to": "Use_9", "width": 1}, {"arrows": "to", "from": "Modify_8", "label": "Object", "relation": "Object", "to": "malicious DLL(Filename)", "width": 1}, {"arrows": "to", "from": "Modify_8", "to": "Use_9", "width": 1}, {"arrows": "to", "from": "desktop-n2v1smh(Registy)", "label": "Has value", "relation": "Has value", "to": "shortcut file metadata(Value)", "width": 1}, {"arrows": "to", "from": "desktop-cb248vr(Registy)", "label": "Has value", "relation": "Has value", "to": "shortcut file metadata(Value)", "width": 1}, {"arrows": "to", "from": "Use_9", "label": "Object", "relation": "Object", "to": "decoy document(Filename)", "width": 1}, {"arrows": "to", "from": "Use_9", "to": "Operate_10", "width": 1}, {"arrows": "to", "from": "Operate_10", "label": "Object", "relation": "Object", "to": "PlugX C2 server(Infrastructure)", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

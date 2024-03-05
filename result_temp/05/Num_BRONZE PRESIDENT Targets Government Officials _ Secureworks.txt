@@ -1,0 +1,399 @@
+0: 12/7/22, 9:27 AM
+1: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+2: BRONZE PRESIDENT Targets Government Officials
+3: secureworks.com/blog/bronze-president-targets-government-officials
+4: The likely Chinese government-sponsored threat group uses decoy documents and PlugXmalware to compromise targets.
+5: Thursday, September 8, 2022 By: Counter Threat UnitResearch TeamIn June and July 2022, Secureworks® Counter Threat Unit™ (CTU) researchers identified aPlugX malware campaign targeting computers belonging to government officials of severalcountries in Europe, the Middle East, and South America.
+6: PlugX is modular malware thatcontacts a command and control (C2) server for tasking and can download additional pluginsto enhance its capability beyond basic information gathering.
+7: Several characteristics of thiscampaign indicate that it was conducted by the likely Chinese government-sponsoredBRONZE PRESIDENT threat group, including the use of PlugX, file paths and namingschemes previously used by the threat group, the presence of shellcode in executable fileheaders, and politically-themed decoy documents that align with regions where China hasinterests.
+8: The malware is embedded within RAR archive files.
+9: Opening the archive on a Windowscomputer with default settings displays a Windows shortcut (LNK) file (see Figure 1) thatmasquerades as a document.
+10: Figure 1.
+11: Content of RAR archive file.
+12: (Source: Secureworks)
+13: Alongside the shortcut is a hidden folder that contains the malware, embedded eight levelsdeep in a sequence of hidden folders named with special characters (see Figure 2).
+14: Thistiering is likely to bypass mail-scanning products that may not traverse the entire path whenscanning content, suggesting that the delivery mechanism was phishing emails, as there is noother benefit to creating such a folder structure.
+15: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+16: Figure 2.
+17: Malicious files contained within hidden folder.
+18: (Source: Secureworks)
+19: To execute the malware, the recipient must click the Windows shortcut file.
+20: The shortcutexecutes a renamed legitimate file contained in the eighth hidden folder.
+21: Alongside thelegitimate file is a malicious DLL and an encrypted payload file.
+22: CTU™ researchers observedthe malicious payload using the folder names and filenames in Table 1.
+23: Hiddenfolder
+24: Legitimate binary
+25: Malicious DLL
+26: EncryptedPlugX payload
+27: Opera.exe (renamedtest.tmp)
+28: Opera.exe (renamedmail.tmp)
+29: Opera.exe (renamedtest.bpl)
+30: opera_browser.dll operaDB.dat
+31: opera_browser.dll operaDB.dat
+32: opera_browser.dll operaDB.dat
+33: Shortcut file
+34: HU proposals to the draftEUCOconclusions.pdf.lnk
+35: Embassy of the Republicof Suriname 2022-N-033.pdf.lnk
+36: Predlog termina zvanicneposjete zamjenicepredsjedavajuceg Vijecaministara i ministarkevanjskih poslovaBiH.pdf.lnk
+37: EL Non-Paper PandemicResilience final.docx.lnk
+38: Adobe Stock PhotosCs3.exe (renamedtest.chs)
+39: Adobe_Caps.dll
+40: AdobePlugin.dat
+41: 313615_MONTENEGRO-2021-HUMAN-RIGHTS-REPORT.pdf.lnk
+42: EU 31st session of theCommission on CrimePrevention and CriminalJustice United Nations onDrugs and Crime.pdf.lnk
+43: AvastBrowserUpdate.exe(renamed winrar.chm)
+44: Goopdate.dll
+45: AvastDB.dat
+46: AvastBrowserUpdate.exe(renamed chrom.uce)
+47: Goopdate.dll
+48: AvastDB.dat
+49: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+50: Shortcut file
+51: NV 309-2022 HMA'sdeparture.pdf.lnk
+52: Hiddenfolder
+53: Legitimate binary
+54: Malicious DLL
+55: EncryptedPlugX payload
+56: Opera.exe (renamedtest.chm)
+57: opera_browser.dll operaDB.dat
+58: Table 1.
+59: Filenames used in PlugX campaign.
+60: The legitimate binary files are vulnerable to DLL search order hijacking.
+61: When executed, theyimport the malicious DLL that loads, decrypts, and executes the payload file.
+62: In each sampleanalyzed by CTU researchers, the shortcut file metadata indicates the file was created on aWindows system either with hostname "desktop-n2v1smh" or "desktop-cb248vr".
+63: Once running, the payload drops a decoy document to the logged-on user's %Temp%directory and copies the three files to a ProgramData subdirectory using the pattern "<Application><3 characters>" (e.g., Operavng) (see Figure 3).
+64: This naming scheme has beenused in previous BRONZE PRESIDENT PlugX campaigns.
+65: CTU researchers observed thatwhen the payload performs the copy operation, it names the legitimate executable with itsusual name (e.g., Opera.exe, AdobePlugin.exe, AvastBrowser.exe).
+66: Figure 3.
+67: PlugX files copied to ProgramData subdirectory.
+68: (Source: Secureworks)
+69: The political nature of the decoy documents suggests that the government officials of variouscountries are targets for BRONZE PRESIDENT's intelligence collection efforts (see Figures 4,5, and 6).
+70: The threat group consistently targets China's neighbors such as Myanmar andVietnam.
+71: However, its collection requirements can change quickly and are often driven bygeopolitical events such as the war in Ukraine.
+72: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+73: Figure 4.
+74: Decoy document used by BRONZE PRESIDENT.
+75: (Source: Secureworks)
+76: Figure 5.
+77: Decoy document used by BRONZE PRESIDENT.
+78: (Source: Secureworks)
+79: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+80: Figure 6.
+81: Decoy document used by BRONZE PRESIDENT.
+82: (Source: Secureworks)
+83: PlugX sets up persistence on the host by setting a registry Run key (see Figure 7).
+84: Figure 7.
+85: PlugX registry configuration.
+86: (Source: Secureworks)
+87: The running instance of the PlugX payload executes the copy of the legitimate file underProgramData, passing it a command-line argument before exiting (see Figure 8).
+88: Passingcommand-line arguments lets the malware adapt its execution based on its executionlocation.
+89: CTU researchers observed this tactic in previous BRONZE PRESIDENT PlugXcampaigns.
+90: Once running, the legitimate file again imports the malicious DLL in the samefolder, loading, decoding, and passing execution to the malicious payload file.
+91: Figure 8.
+92: PlugX process execution with command-line argument.
+93: (Source: Secureworks)
+94: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+95: The payload file calls GetCommandLineW to check the number of arguments.
+96: If an additionalargument follows the file path, the malware opens the decoy document previously dropped tothe user's %Temp% folder and continues execution with its C2 routine.
+97: The malicious DLLs and payloads are heavily obfuscated to hinder analysis and to reduce thelikelihood of detection by host-based security software.
+98: The malicious DLL executes itspayload using an unusual technique.
+99: Instead of using a call or jmp instruction, it first decodesand copies the payload to a new allocation of memory and then makes a call toEnumThreadWindows to pass execution to the start of the malicious payload file (see Figure9).
+100: Figure 9.
+101: Malicious DLL calling EnumThreadWindows.
+102: (Source: Secureworks)
+103: The start of the payload file is treated as executable code in the same way as a Cobalt Strikestageless payload artifact.
+104: This could be a tactic developed by BRONZE PRESIDENT toincrease the likelihood of its malware being misidentified as the popular Cobalt Strike tool.
+105: The payload resolves various required Windows functions.
+106: It then starts a new thread thatmakes repeated calls to CheckRemoteDebuggerPresent, exiting if it detects a debugger.
+107: Figure 10 shows the payload preparing to decode its configuration.
+108: The values pushed to thestack are key length, key, data length, and data address.
+109: The key is used as a multibyte XORvalue.
+110: All observed key value lengths are nine bytes, and their values vary across samples.
+111: Figure 10.
+112: PlugX calling its configuration decode function.
+113: (Source: Secureworks)
+114: Figure 11 shows the beginning of the decoded configuration, including the installationdirectory, mutex name, and the name of the decoy document associated with the sample.
+115: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+116: Figure 11.
+117: PlugX configuration data.
+118: (Source: Secureworks)
+119: BRONZE PRESIDENT has demonstrated an ability to pivot quickly for new intelligencecollection opportunities.
+120: Organizations in geographic regions of interest to China shouldclosely monitor this group's activities, especially organizations associated with or operating asgovernment agencies.
+121: To mitigate exposure to this malware, CTU researchers recommend that organizations useavailable controls to review and restrict access using the indicators listed in Table 2.
+122: Note thatIP addresses can be reallocated.
+123: The IP addresses may contain malicious content, so considerthe risks before opening them in a browser.
+124: Indicator
+125: Context
+126: c285eaea0fe441f550479f7ef85a3dd0
+127: MD5hash
+128: 41d61af1d61d6e1c4718132e64268005ce362b36
+129: SHA1hash
+130: 4cd7d84e464a2786446df623629aa7e2e6c776c9a870278eb39b54c5fba05044
+131: SHA256hash
+132: Malicious RAR file containing PlugX(Predlog termina zvanicne posjetezamjenice predsjedavajuceg Vijecaministara i ministarke vanjskihposlova BiH.rar)
+133: Malicious RAR file containing PlugX(Predlog termina zvanicne posjetezamjenice predsjedavajuceg Vijecaministara i ministarke vanjskihposlova BiH.rar)
+134: Malicious RAR file containing PlugX(Predlog termina zvanicne posjetezamjenice predsjedavajuceg Vijecaministara i ministarke vanjskihposlova BiH.rar)
+135: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+136: Indicator
+137: Context
+138: 3a94449d664033955012edac0161b2b8 MD5hash
+139: 91192be3288369f341951143a81c890c11e23726
+140: SHA1hash
+141: 254739e88ba4b4e62c5e2a313303b4bc679faabe21e7d9c483a2bee846a9dcbc
+142: SHA256hash
+143: Malicious shortcut file that executesPlugX (Predlog termina zvanicneposjete zamjenice predsjedavajucegVijeca ministara i ministarke vanjskihposlova BiH.pdf.lnk)
+144: Malicious shortcut file that executesPlugX (Predlog termina zvanicneposjete zamjenice predsjedavajucegVijeca ministara i ministarke vanjskihposlova BiH.pdf.lnk)
+145: Malicious shortcut file that executesPlugX (Predlog termina zvanicneposjete zamjenice predsjedavajucegVijeca ministara i ministarke vanjskihposlova BiH.pdf.lnk)
+146: 370557aa593c96533e5994d073ddd202 MD5hash
+147: Malicious DLL that loads PlugX(opera_browser.dll)
+148: 81e8fb5149fda8e1231c9f0f22001cea5b70429b
+149: SHA1hash
+150: Malicious DLL that loads PlugX(opera_browser.dll)
+151: 9adf5dd03388fab2866014d0551881d6e85c7ac94ef5ccf58deb50a83f8a5d50
+152: SHA256hash
+153: Malicious DLL that loads PlugX(opera_browser.dll)
+154: 2a1fc50626afbcc6d8fbda3c65d6cc2b
+155: MD5hash
+156: Encrypted PlugX payload(operaDB.dat)
+157: c378c0716bf20ebc83403871ae9d96a2717f7599
+158: SHA1hash
+159: Encrypted PlugX payload(operaDB.dat)
+160: d556d7603178a7e4242c01fa5e490ea4589707eeeab2f3c6c4966bd9b912bd59
+161: SHA256hash
+162: Encrypted PlugX payload(operaDB.dat)
+163: 041a00485779c5a9e42d803e730ceb6c MD5hash
+164: bd6e5031067724d51abfc2cd2d0fb5adeed33868
+165: SHA1hash
+166: 77a61de438f618fab6e75a920e4ca6756917e501f390b8b4f50c3005505bf488
+167: SHA256hash
+168: 3277b31aa055bc149af8c37699019586 MD5hash
+169: Malicious RAR file containing PlugX(Embassy of the Republic ofSuriname 2022-N-033.rar)
+170: Malicious RAR file containing PlugX(Embassy of the Republic ofSuriname 2022-N-033.rar)
+171: Malicious RAR file containing PlugX(Embassy of the Republic ofSuriname 2022-N-033.rar)
+172: Malicious shortcut file that executesPlugX (Embassy of the Republic ofSuriname 2022-N-033.pdf.lnk)
+173: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+174: Indicator
+175: Context
+176: d0d6618fc79ffa3de2aec58603539a294a0bc203
+177: SHA1hash
+178: 94e76db201d4998394effae2c132730ff958bf6553f6dd08d0d5856ecb5e8a84
+179: SHA256hash
+180: Malicious shortcut file that executesPlugX (Embassy of the Republic ofSuriname 2022-N-033.pdf.lnk)
+181: Malicious shortcut file that executesPlugX (Embassy of the Republic ofSuriname 2022-N-033.pdf.lnk)
+182: 675ccbd9318414e2eb0dcabf8a387723 MD5hash
+183: Malicious DLL that loads PlugX(opera_browser.dll)
+184: 89f187c9f76d8afa2b6a8c54fa0bc10563e0169b
+185: SHA1hash
+186: Malicious DLL that loads PlugX(opera_browser.dll)
+187: abea565d16ec5724591331d962d5cf0237f4628f8cb21b96592c09cc002b10c2
+188: SHA256hash
+189: Malicious DLL that loads PlugX(opera_browser.dll)
+190: 5d71c482148a76900888c8e1d382d413 MD5hash
+191: Encrypted PlugX payload(operaDB.dat)
+192: 6637e077ea52dc62cd31b1a868b3c222953b8aa9
+193: SHA1hash
+194: Encrypted PlugX payload(operaDB.dat)
+195: 02375309e74e91b96c0a41f577f3e4b994f3b406abe0619ee6ad69d00e810093
+196: SHA256hash
+197: Encrypted PlugX payload(operaDB.dat)
+198: 0e37ed727cdb8ae96a50df6391991cc1 MD5hash
+199: 5285fedf930ccb1acf418c52d581e535504aac76
+200: SHA1hash
+201: cbc2d11cb9a495d4697c783cd2aa711a5691d3c257ddb95960d27c96f62c15c1
+202: SHA256hash
+203: 788cf16121782b4358dc8350012470ab MD5hash
+204: 63d63b96ef50a4002d3acf8f50bc2b62d1ec46c4
+205: SHA1hash
+206: 3cdd37d2459779bd17dd47d4dd7f0df6fc59f5208b67b4e4a259c98d8b4788d9
+207: SHA256hash
+208: Malicious RAR file containing PlugX(HU proposals to the draft EUCOconclusions.rar)
+209: Malicious RAR file containing PlugX(HU proposals to the draft EUCOconclusions.rar)
+210: Malicious RAR file containing PlugX(HU proposals to the draft EUCOconclusions.rar)
+211: Malicious shortcut file that executesPlugX (HU proposals to the draftEUCO conclusions.pdf.lnk)
+212: Malicious shortcut file that executesPlugX (HU proposals to the draftEUCO conclusions.pdf.lnk)
+213: Malicious shortcut file that executesPlugX (HU proposals to the draftEUCO conclusions.pdf.lnk)
+214: 3e004dd25b5e836bc2500098c55a2b6d MD5hash
+215: Malicious DLL that loads PlugX(opera_browser.dll)
+216: 602a80e0924a65316cafc48356fe527e427c291f
+217: SHA1hash
+218: Malicious DLL that loads PlugX(opera_browser.dll)
+219: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+220: Indicator
+221: Context
+222: 7c29f4a79f74f8b299fb9e778322b00221e9992d0ac6d2bd915da6629516fa2f
+223: SHA256hash
+224: Malicious DLL that loads PlugX(opera_browser.dll)
+225: 5536783ddc6c15e3e8aef2a756536020 MD5hash
+226: Encrypted PlugX payload(operaDB.dat)
+227: 0809275ecacd52869b43bf4e9804e309c6bb00b7
+228: SHA1hash
+229: Encrypted PlugX payload(operaDB.dat)
+230: 910c0e5532a94856e8c9047e8c951e21345bec4ca6b6950cc5ef0da102d2efab
+231: SHA256hash
+232: Encrypted PlugX payload(operaDB.dat)
+233: 0e91279b5f7f732106077ab10aa08c58 MD5hash
+234: b4aa56abac4a19aedcda87ef2fb7c8bbbeb3bf64
+235: SHA1hash
+236: 4bbb10842941e9004c5449966fca1648491618ec7841e6befd3e848d75407a10
+237: SHA256hash
+238: Malicious RAR file containing PlugX(EL Non-Paper Pandemic Resiliencefinal.rar)
+239: Malicious RAR file containing PlugX(EL Non-Paper Pandemic Resiliencefinal.rar)
+240: Malicious RAR file containing PlugX(EL Non-Paper Pandemic Resiliencefinal.rar)
+241: 1f47ba7fd131a1a6f7623d76b420d7e9
+242: MD5hash
+243: Malicious shortcut file that executesPlugX (EL Non-Paper PandemicResilience final.docx.lnk)
+244: 07c5e675714a1af618d8eb1f370be12763138343
+245: SHA1hash
+246: bf46f4724e5a3b05130df4014244684033feadb1c10d8309b7e3069a4b014a88
+247: SHA256hash
+248: Malicious shortcut file that executesPlugX (EL Non-Paper PandemicResilience final.docx.lnk)
+249: Malicious shortcut file that executesPlugX (EL Non-Paper PandemicResilience final.docx.lnk)
+250: 7c3a5bbbfb53d4eb91cd174527460824 MD5hash
+251: Malicious DLL that loads PlugX(Adobe_Caps.dll)
+252: a6b2c6052ee686e204ad0fbe8d31498557a3f4ad
+253: SHA1hash
+254: Malicious DLL that loads PlugX(Adobe_Caps.dll)
+255: 840426f9d4d9eb535f5963f76f7cdf84de084f352dfc0ebc7332b2b4827782e7
+256: SHA256hash
+257: Malicious DLL that loads PlugX(Adobe_Caps.dll)
+258: 459b4b1edd018ba31242b4780ec39a78 MD5hash
+259: Encrypted PlugX payload(AdobePlugin.dat)
+260: f8ae9ea9ca603dfc10a309b052dc57ee0b75021d
+261: SHA1hash
+262: Encrypted PlugX payload(AdobePlugin.dat)
+263: 545e2c9965dc0449bb652ae2fb3d1f743741ce4f18c045dc50a3f571a1f267f5
+264: SHA256hash
+265: Encrypted PlugX payload(AdobePlugin.dat)
+266: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+267: Indicator
+268: Context
+269: 493cb5056dee306ac2c93af2285ad9d8 MD5hash
+270: dcc6edf9c40f9c3f914416805252e11aecb2e5ad
+271: SHA1hash
+272: 325736437e278bccd6f04e0c57f72be7e1b4787b10743d813581cfc75dc4888f
+273: SHA256hash
+274: Malicious RAR file containing PlugX(313615_MONTENEGRO-2021-HUMAN-RIGHTS-REPORT.rar)
+275: Malicious RAR file containing PlugX(313615_MONTENEGRO-2021-HUMAN-RIGHTS-REPORT.rar)
+276: Malicious RAR file containing PlugX(313615_MONTENEGRO-2021-HUMAN-RIGHTS-REPORT.rar)
+277: f6b365fad2dba5c7378df81339bb3078
+278: MD5hash
+279: Malicious shortcut file that executesPlugX (313615_MONTENEGRO-2021-HUMAN-RIGHTS-REPORT.pdf.lnk)
+280: 710bc29b56da533cae0ed5bba47916b811479ee8
+281: SHA1hash
+282: eab73a44642e130091177ed2a7938c67d2411ccf81141a96bdb5116678ac97c2
+283: SHA256hash
+284: Malicious shortcut file that executesPlugX (313615_MONTENEGRO-2021-HUMAN-RIGHTS-REPORT.pdf.lnk)
+285: Malicious shortcut file that executesPlugX (313615_MONTENEGRO-2021-HUMAN-RIGHTS-REPORT.pdf.lnk)
+286: 5c56ac14f1245fecc7fa930bb49a0f7d
+287: MD5hash
+288: Malicious DLL that loads PlugX(goopdate.dll)
+289: 95f0de261ff57e67d666277b8678365089853d45
+290: SHA1hash
+291: Malicious DLL that loads PlugX(goopdate.dll)
+292: b7f6cf8a6a697b254635eb0b567e2a897c7f0cefb0c0d4576326dc3f0eb09922
+293: SHA256hash
+294: Malicious DLL that loads PlugX(goopdate.dll)
+295: c94f930fee694db7253e7784ca3adc87
+296: 04afecffaaff12058e07bcbda65dbbb61cdea762
+297: MD5hash
+298: SHA1hash
+299: Encrypted PlugX payload(AvastDB.dat)
+300: Encrypted PlugX payload(AvastDB.dat)
+301: 13e60a836d64ce6d18059c82c2c0c1a3af0fce87e16d85f26e4b665d4e24e1b1
+302: SHA256hash
+303: Encrypted PlugX payload(AvastDB.dat)
+304: e2fe6c54cb4a9a45fbc6f7eb3a9c4fbf
+305: MD5hash
+306: Malicious RAR file containing PlugX(EU 31st session of the Commissionon Crime Prevention and CriminalJustice United Nations on Drugs andCrime.rar)
+307: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+308: Indicator
+309: Context
+310: 85d8da08ba6ce60b9116c0c93f8d8c9e4fa7f24c
+311: SHA1hash
+312: 09fc8bf9e2980ebec1977a8023e8a2940e6adb5004f48d07ad34b71ebf35b877
+313: SHA256hash
+314: c004559076a1d21e50477580526f2d9f MD5hash
+315: 840c535120ed91eb88d32abe6fcc06d5b3053674
+316: SHA1hash
+317: a693b9f9ffc5f4900e094b1d1360f7e7b907c9c8680abfeace34e1a8e380f405
+318: SHA256hash
+319: Malicious RAR file containing PlugX(EU 31st session of the Commissionon Crime Prevention and CriminalJustice United Nations on Drugs andCrime.rar)
+320: Malicious RAR file containing PlugX(EU 31st session of the Commissionon Crime Prevention and CriminalJustice United Nations on Drugs andCrime.rar)
+321: Malicious shortcut file that executesPlugX (EU 31st session of theCommission on Crime Preventionand Criminal Justice United Nationson Drugs and Crime.pdf.lnk)
+322: Malicious shortcut file that executesPlugX (EU 31st session of theCommission on Crime Preventionand Criminal Justice United Nationson Drugs and Crime.pdf.lnk)
+323: Malicious shortcut file that executesPlugX (EU 31st session of theCommission on Crime Preventionand Criminal Justice United Nationson Drugs and Crime.pdf.lnk)
+324: af7b0e51f1572601889994f36b0a9d7a
+325: MD5hash
+326: Malicious DLL that loads PlugX(goopdate.dll)
+327: 0d7daad1d60f2ed2e23188aab1f3bbabf3ad0b63
+328: SHA1hash
+329: Malicious DLL that loads PlugX(goopdate.dll)
+330: bda43368b62971b395c8fbcc854b6e9d113b3e26931214568e1df6201c1dfd0c
+331: SHA256hash
+332: Malicious DLL that loads PlugX(goopdate.dll)
+333: 1409c055064becf02ed074b6d0976feb MD5hash
+334: Encrypted PlugX payload(AvastDB.dat)
+335: bb9803312d697d4cac5f7a2bec57da73b4d88486
+336: SHA1hash
+337: Encrypted PlugX payload(AvastDB.dat)
+338: dfa01872aab09f04fcb9eca3653bd0fbc6968d040b12aedb93050d363e964891
+339: SHA256hash
+340: Encrypted PlugX payload(AvastDB.dat)
+341: d3129539bc1e1c6cce321693be186522 MD5hash
+342: Malicious RAR file containing PlugX(NV 309-2022 HMA'sdeparture.pdf.rar)
+343: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+344: Indicator
+345: Context
+346: d640592b13b6983a38948f733a4b4621cdaf2530
+347: SHA1hash
+348: 69ba51fe80ef91fb0b7280d16290a24941d3a131cee43f4379821f44d089d63e
+349: SHA256hash
+350: 07e9c84bee28450b1ec24a6f06016802 MD5hash
+351: 4d15d67e1175f36be7b14c9474102d0982ea97b8
+352: SHA1hash
+353: 924fffea4d0a4710d71b507523d76a854f06d4b9e64eb9074c04e1ec34141a53
+354: SHA256hash
+355: Malicious RAR file containing PlugX(NV 309-2022 HMA'sdeparture.pdf.rar)
+356: Malicious RAR file containing PlugX(NV 309-2022 HMA'sdeparture.pdf.rar)
+357: Malicious shortcut file that executesPlugX (NV 309-2022 HMA'sdeparture.pdf.lnk)
+358: Malicious shortcut file that executesPlugX (NV 309-2022 HMA'sdeparture.pdf.lnk)
+359: Malicious shortcut file that executesPlugX (NV 309-2022 HMA'sdeparture.pdf.lnk)
+360: a510e7b3e447a090cd3f41c4a1a9bd3a MD5hash
+361: Malicious DLL that loads PlugX(opera_browser.dll)
+362: d30791be1bf9d2247faa6dfbeb9c132e9990b401
+363: SHA1hash
+364: Malicious DLL that loads PlugX(opera_browser.dll)
+365: 023d3bce6f1bcf6c15eb839a4e28c4888a346beaad74afce50cf30f4d911e70d
+366: SHA256hash
+367: Malicious DLL that loads PlugX(opera_browser.dll)
+368: e819924ea9fa0c53634b306648cb9a84 MD5hash
+369: Encrypted PlugX payload(operaDB.dat)
+370: 70f36366b579ba344f9e90ec63b0e273fe6526e0
+371: SHA1hash
+372: Encrypted PlugX payload(operaDB.dat)
+373: 4b7c37ca79536f2692c64dfdc1b70738ceeb74ef7ba9e78d8f8db1dfa7ea64ef
+374: SHA256hash
+375: Encrypted PlugX payload(operaDB.dat)
+376: 64.34.205.41
+377: 69.90.190.110
+378: 104.255.174.58
+379: IPaddress
+380: IPaddress
+381: IPaddress
+382: PlugX C2 server
+383: PlugX C2 server
+384: PlugX C2 server
+385: Table 2.
+386: Indicators for this threat.
+387: If you need urgent assistance with an incident, contact the Secureworks Incident Responseteam.
+388: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks
+389: Stay Informed
+390: Get the latest in cybersecurity news, trends, and research
+391: SEND ME UPDATES
+392: Secureworks Taegis™
+393: Security Analytics +Human IntelligenceDelivers BetterSecurity Outcomes
+394: About Taegis
+395: Latest Report
+396: Reports
+397: 2022 State of the Threat Report
+398: BRONZE PRESIDENT Targets Government Ofﬁcials | Secureworks

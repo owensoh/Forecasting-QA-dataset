@@ -1,0 +1,17 @@
+{
+  "Reconnaissance": "The report does not contain any specific information related to the Reconnaissance tactic.",
+  "Resource Development": "The report does not contain any specific information related to the Resource Development tactic.",
+  "Initial Access": "The report does not contain any specific information related to the Initial Access tactic.",
+  "Execution": "The report contains detailed information about the Execution tactic, including the use of PlugX malware to compromise government officials' computers in several countries. The malware is embedded within RAR archive files and is executed when the recipient clicks on a Windows shortcut file. The payload sets up persistence on the host by setting a registry Run key and executes the copy of the legitimate file under ProgramData, passing it a command-line argument before exiting. The payload resolves various required Windows functions and starts a new thread that makes repeated calls to CheckRemoteDebuggerPresent, exiting if it detects a debugger. The malicious DLLs and payloads are heavily obfuscated to hinder analysis and reduce the likelihood of detection by host-based security software.",
+  "Persistence": "The report contains detailed information about the Persistence tactic, including how the PlugX malware sets up persistence on the host by setting a registry Run key and executes the copy of the legitimate file under ProgramData, passing it a command-line argument before exiting. The payload resolves various required Windows functions and starts a new thread that makes repeated calls to CheckRemoteDebuggerPresent, exiting if it detects a debugger.",
+  "Privilege Escalation": "The report does not contain any specific information related to the Privilege Escalation tactic.",
+  "Defense Evasion": "The report contains detailed information about the Defense Evasion tactic, including how the malicious DLLs and payloads are heavily obfuscated to hinder analysis and reduce the likelihood of detection by host-based security software.",
+  "Credential Access": "The report does not contain any specific information related to the Credential Access tactic.",
+  "Discovery": "The report does not contain any specific information related to the Discovery tactic.",
+  "Lateral Movement": "The report does not contain any specific information related to the Lateral Movement tactic.",
+  "Collection": "The report does not contain any specific information related to the Collection tactic.",
+  "Command and Control": "The report contains detailed information about the Command and Control tactic, including the use of PlugX malware that contacts a command and control (C2) server for tasking and can download additional plugins to enhance its capability beyond basic information gathering.",
+  "Exfiltration": "The report does not contain any specific information related to the Exfiltration tactic.",
+  "Impact": "The report does not contain any specific information related to the Impact tactic.",
+  "Others": "None"
+}

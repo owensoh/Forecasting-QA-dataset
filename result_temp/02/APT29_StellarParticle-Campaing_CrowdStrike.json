@@ -1,0 +1,253 @@
+{
+  "events": [
+    {
+      "Subject": "CrowdStrike(Author)",
+      "Relation": "Construct",
+      "Object": "StellarParticle Campaign(Report Type)",
+      "SentenceNums": [
+        0
+      ]
+    },
+    {
+      "Subject": "crowdstrike.com(Author)",
+      "Relation": "Has URL",
+      "Object": "StellarParticle Campaign(Report Type)",
+      "SentenceNums": [
+        1
+      ]
+    },
+    {
+      "Subject": "CrowdStrike Services(Author)",
+      "Relation": "Belong to",
+      "Object": "CrowdStrike Intelligence(Vender)",
+      "SentenceNums": [
+        2
+      ]
+    },
+    {
+      "Subject": "January 27, 2022(Date)",
+      "Relation": "Modify",
+      "Object": "StellarParticle Campaign(Report Type)",
+      "SentenceNums": [
+        3
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Belong to",
+      "Object": "SUNSPOT(Threat Actor)",
+      "SentenceNums": [
+        4
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "TrailBlazer(Malware)",
+      "SentenceNums": [
+        5
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Novel Tactics and Techniques(Tactic)",
+      "SentenceNums": [
+        5
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "GoldMax(Malware)",
+      "SentenceNums": [
+        5
+      ]
+    },
+    {
+      "Subject": "Foreign Intelligence Service of the Russian Federation(SVR)(Organization)",
+      "Relation": "Operate",
+      "Object": "StellarParticle Campaign(Report Type)",
+      "SentenceNums": [
+        7
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Belong to",
+      "Object": "COZY BEAR(Threat Actor)",
+      "SentenceNums": [
+        8
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Credential hopping(Technique)",
+      "SentenceNums": [
+        18
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Microsoft Service Principal manipulation(Technique)",
+      "SentenceNums": [
+        31
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Browser cookie theft(Technique)",
+      "SentenceNums": [
+        31
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "TrailBlazer(Malware)",
+      "SentenceNums": [
+        84
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "GoldMax(Malware)",
+      "SentenceNums": [
+        101
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Credential Theft(Technique)",
+      "SentenceNums": [
+        231
+      ]
+    },
+    {
+      "Subject": "COZY BEAR(Threat Actor)",
+      "Relation": "Use",
+      "Object": "Get-ADReplAccount(Filename)",
+      "SentenceNums": [
+        234
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Belong to",
+      "Object": "COZY BEAR(Threat Actor)",
+      "SentenceNums": [
+        272
+      ]
+    },
+    {
+      "Subject": "CrowdStrike(Author)",
+      "Relation": "Detect",
+      "Object": "StellarParticle Campaign(Report Type)",
+      "SentenceNums": [
+        273
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Use",
+      "Object": "CredentialAccess(Technique)",
+      "SentenceNums": [
+        280,
+        285
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Use",
+      "Object": "Initial Access(Tactic)",
+      "SentenceNums": [
+        286,
+        290
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Use",
+      "Object": "Persistence(Tactic)",
+      "SentenceNums": [
+        291,
+        310
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Use",
+      "Object": "DefenseEvasion(Tactic)",
+      "SentenceNums": [
+        311,
+        316
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Use",
+      "Object": "Discovery(Tactic)",
+      "SentenceNums": [
+        317,
+        318
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Use",
+      "Object": "Collection(Tactic)",
+      "SentenceNums": [
+        320,
+        335
+      ]
+    },
+    {
+      "Subject": "StellarParticle Campaign(Report Type)",
+      "Relation": "Has value",
+      "Object": "Indicator of Compromise(IOCs)",
+      "SentenceNums": [
+        336,
+        365
+      ]
+    }
+  ],
+  "id": "TA-00000003",
+  "file_name": "APT29_StellarParticle-Campaing_CrowdStrike",
+  "sentences": {
+    "0": "StellarParticle Campaign: Novel Tactics and Techniques",
+    "1": "crowdstrike.com/blog/observations-from-the-stellarparticle-campaign/",
+    "2": "CrowdStrike Services - CrowdStrike Intelligence",
+    "3": "January 27, 2022",
+    "4": "StellarParticle is a campaign tracked by CrowdStrike as related to the SUNSPOT implantfrom the SolarWinds intrusion in December 2020 and associated with COZY BEAR (akaAPT29, “The Dukes”).",
+    "5": "The StellarParticle campaign has continued against multiple organizations, with COZYBEAR using novel tools and techniques to complete their objectives, as identified byCrowdStrike incident responders and the CrowdStrike Intelligence team.Browser cookie theft and Microsoft Service Principal manipulation are two of the noveltechniques and tools leveraged in the StellarParticle campaign and are discussed in thisblog.Two sophisticated malware families were placed on victim systems in mid-2019: a Linuxvariant of GoldMax and a new implant dubbed TrailBlazer.",
+    "7": "Throughout 2020, an operationattributed to the Foreign Intelligence Service of the Russian Federation (SVR) by the U.S.government was conducted to gain access to the update mechanism of the SolarWinds ITmanagement software and use it to broaden their intelligence collection capabilities.",
+    "8": "Thisactivity is tracked by CrowdStrike as the StellarParticle campaign and is associated with theCOZY BEAR adversary group.",
+    "18": "This led our responders to identify the occurrence of “credential hopping,” where the threatactor leveraged different credentials for each step while moving laterally through the victim’snetwork.",
+    "31": "Even though the victims required MFA to access cloud resources from all locations, includingon premises, the threat actor managed to bypass MFA through the theft of Chrome browsercookies.",
+    "84": "TrailBlazer",
+    "101": "Attempted to blend in with a file name that matched the system name it resided onConfigured for persistence via a crontab entry with a  @reboot  line Used likely compromised infrastructure for C2",
+    "231": "Credential Theft Using Get-ADReplAccount",
+    "234": "The threat actor subsequently ran the DSInternals command  Get-ADReplAccount  targeting two of the victim’s domains.",
+    "272": "The StellarParticle campaign, associated with the COZY BEAR adversary group,demonstrates this threat actor’s extensive knowledge of Windows and Linux operatingsystems, Microsoft Azure, O365, and Active Directory, and their patience and covert skill set tostay undetected for months — and in some cases, years.",
+    "273": "A special thank you to the CrowdStrike Incident Response and CrowdStrike Intelligence teamsfor helping make this blog possible, especially Ryan McCombs, Ian Barton, Patrick Bennet,Alex Parsons, Christopher Romano, Jackson Roussin and Tom Goldsmith.",
+    "280": "CredentialAccess",
+    "285": "The threat actor used a heavily obfuscated PowerShellscript to execute the Mimikatz commands‘privilege::debug sekurlsa::logonpasswords“lsadump::lsa /patch”‘ in-memory and encrypt theoutput",
+    "286": "Initial Access /Persistence",
+    "290": "The threat actor exported saved passwords fromuser’s Chrome browser installations",
+    "291": "Initial Access /Persistence",
+    "310": "T1546.003:EventTriggeredExecution:WindowsManagementInstrumentationEventSubscription",
+    "311": "T1036.005:Masquerading:MatchLegitimateName orLocation",
+    "316": "The threat actor renamed their utilities to masqueradeas legitimate system binaries (AdFind as svchost.exe),match the system’s role (GoldMax), or appearlegitimate (TrailBlazer as an apparent Adobe utility).Additionally, the threat actor renamed their systemsprior to connecting to victim’s VPNs to match thevictim’s system naming convention",
+    "317": "The threat actor used AdFind, standard PowerShellcmdlets, and custom tooling to identify various piecesof information from Active Directory",
+    "318": "The threat actor used compromised service principalsto make changes to the Office 365 environment.",
+    "320": "Collection",
+    "335": "The threat actor probed external services in an attemptto regain access to the environment",
+    "336": "Indicators of Compromise (IOCs)",
+    "365": "21/21"
+  }
+}

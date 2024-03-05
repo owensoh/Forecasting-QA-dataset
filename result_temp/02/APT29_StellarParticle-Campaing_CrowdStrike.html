@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 1800px;
+                 height: 1200px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Construct_0", "label": "Construct\n0", "sent_nums": [0], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 0, "y": 0.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "StellarParticle Campaign(Report Type)", "label": "StellarParticle Campaign(Report Type)", "shape": "dot", "size": 10, "type": "entity", "x": 1900.0, "y": 500.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Modify_1", "label": "Modify\n3", "sent_nums": [3], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 200, "y": 0.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "CrowdStrike(Author)", "label": "CrowdStrike(Author)", "shape": "dot", "size": 10, "type": "entity", "x": 1200.0, "y": 500.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Detect_13", "label": "Detect\n273", "sent_nums": [273], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 2000, "y": 0.0}, {"color": "#97c2fc", "depth": 2, "font_size": 8, "id": "SUNSPOT(Threat Actor)", "label": "SUNSPOT(Threat Actor)", "shape": "dot", "size": 10, "type": "entity", "x": 1900.0, "y": 600.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "COZY BEAR(Threat Actor)", "label": "COZY BEAR(Threat Actor)", "shape": "dot", "size": 10, "type": "entity", "x": 1081.8181818181818, "y": 600.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_14", "label": "Use\n280 285", "sent_nums": [280, 285], "shape": "triangle", "size": 10, "tactic": "Defense Evasion", "technique": "Defense Evasion-T1027-Obfuscated Files or Information", "type": "event", "x": 2200, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_15", "label": "Use\n286 290", "sent_nums": [286, 290], "shape": "triangle", "size": 10, "tactic": "Execution", "technique": "Execution-T1203-Exploitation for Client Execution", "type": "event", "x": 2400, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_16", "label": "Use\n291 310", "sent_nums": [291, 310], "shape": "triangle", "size": 10, "tactic": "Persistence", "technique": "Persistence-T1546-Event Triggered Execution", "type": "event", "x": 2600, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_17", "label": "Use\n311 316", "sent_nums": [311, 316], "shape": "triangle", "size": 10, "tactic": "Discovery", "technique": "Discovery-Others", "type": "event", "x": 2800, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_18", "label": "Use\n317 318", "sent_nums": [317, 318], "shape": "triangle", "size": 10, "tactic": "Discovery", "technique": "Discovery-Others", "type": "event", "x": 3000, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_19", "label": "Use\n320 335", "sent_nums": [320, 335], "shape": "triangle", "size": 10, "tactic": "Others", "technique": "Others-Others", "type": "event", "x": 3200, "y": 0.0}, {"color": "#97c2fc", "depth": 2, "font_size": 8, "id": "Indicator of Compromise(IOCs)", "label": "Indicator of Compromise(IOCs)", "shape": "dot", "size": 10, "type": "entity", "x": 1700.0, "y": 600.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Others", "label": "Others", "shape": "star", "size": 10, "type": "tactic", "x": 2909.0909090909095, "y": -300.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Others-Others", "label": "Others-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 2909.0909090909095, "y": -200.0}, {"color": "#97c2fc", "depth": 2, "font_size": 8, "id": "crowdstrike.com(Author)", "label": "crowdstrike.com(Author)", "shape": "dot", "size": 10, "type": "entity", "x": 2100.0, "y": 600.0}, {"color": "#97c2fc", "font_size": 8, "id": "CrowdStrike Services(Author)", "label": "CrowdStrike Services(Author)", "shape": "dot", "size": 10, "type": "entity"}, {"color": "#97c2fc", "font_size": 8, "id": "CrowdStrike Intelligence(Vender)", "label": "CrowdStrike Intelligence(Vender)", "shape": "dot", "size": 10, "type": "entity"}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_2", "label": "Use\n5", "sent_nums": [5], "shape": "triangle", "size": 10, "tactic": "Execution", "technique": "Execution-Others", "type": "event", "x": 400, "y": 100.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_3", "label": "Use\n5", "sent_nums": [5], "shape": "triangle", "size": 10, "tactic": "Collection", "technique": "Collection-Others", "type": "event", "x": 400, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_4", "label": "Use\n5", "sent_nums": [5], "shape": "triangle", "size": 10, "tactic": "Defense Evasion", "technique": "Defense Evasion-Others", "type": "event", "x": 400, "y": -100.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "January 27, 2022(Date)", "label": "January 27, 2022(Date)", "shape": "dot", "size": 10, "type": "entity", "x": 200.0, "y": 500.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "GoldMax(Malware)", "label": "GoldMax(Malware)", "shape": "dot", "size": 10, "type": "entity", "x": 900.0, "y": 500.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Operate_5", "label": "Operate\n7", "sent_nums": [7], "shape": "triangle", "size": 10, "tactic": "Defense Evasion", "technique": "Defense Evasion-Others", "type": "event", "x": 600, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_6", "label": "Use\n18", "sent_nums": [18], "shape": "triangle", "size": 10, "tactic": "Credential Access", "technique": "Credential Access-Others", "type": "event", "x": 800, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_7", "label": "Use\n31", "sent_nums": [31], "shape": "triangle", "size": 10, "tactic": "Credential Access", "technique": "Credential Access-T1539-Steal Web Session Cookie", "type": "event", "x": 1000, "y": 50.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_8", "label": "Use\n31", "sent_nums": [31], "shape": "triangle", "size": 10, "tactic": "Credential Access", "technique": "Credential Access-T1539-Steal Web Session Cookie", "type": "event", "x": 1000, "y": -50.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_9", "label": "Use\n84", "sent_nums": [84], "shape": "triangle", "size": 10, "tactic": "Execution", "technique": "Execution-Others", "type": "event", "x": 1200, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_10", "label": "Use\n101", "sent_nums": [101], "shape": "triangle", "size": 10, "tactic": "Execution", "technique": "Execution-Others", "type": "event", "x": 1400, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_11", "label": "Use\n231", "sent_nums": [231], "shape": "triangle", "size": 10, "tactic": "Credential Access", "technique": "Credential Access-T1555-Credentials from Password Stores", "type": "event", "x": 1600, "y": 0.0}, {"color": "#8DF56E", "depth": 0, "font_size": 8, "id": "Use_12", "label": "Use\n234", "sent_nums": [234], "shape": "triangle", "size": 10, "tactic": "Credential Access", "technique": "Credential Access-T1555-Credentials from Password Stores", "type": "event", "x": 1800, "y": 0.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Execution", "label": "Execution", "shape": "star", "size": 10, "type": "tactic", "x": 145.45454545454547, "y": -300.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Execution-Others", "label": "Execution-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 0.0, "y": -200.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Execution-T1203-Exploitation for Client Execution", "label": "Execution-T1203-Exploitation for Client Execution", "shape": "hexagon", "size": 10, "type": "technique", "x": 290.90909090909093, "y": -200.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "TrailBlazer(Malware)", "label": "TrailBlazer(Malware)", "shape": "dot", "size": 10, "type": "entity", "x": 900.0, "y": 500.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Collection", "label": "Collection", "shape": "star", "size": 10, "type": "tactic", "x": 2618.1818181818185, "y": -300.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Collection-Others", "label": "Collection-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 2618.1818181818185, "y": -200.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Novel Tactics and Techniques(Tactic)", "label": "Novel Tactics and Techniques(Tactic)", "shape": "dot", "size": 10, "type": "entity", "x": 400.0, "y": 500.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Defense Evasion", "label": "Defense Evasion", "shape": "star", "size": 10, "type": "tactic", "x": 1018.1818181818182, "y": -300.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Defense Evasion-Others", "label": "Defense Evasion-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 872.7272727272727, "y": -200.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Defense Evasion-T1027-Obfuscated Files or Information", "label": "Defense Evasion-T1027-Obfuscated Files or Information", "shape": "hexagon", "size": 10, "type": "technique", "x": 1163.6363636363637, "y": -200.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Foreign Intelligence Service of the Russian Federation(SVR)(Organization)", "label": "Foreign Intelligence Service of the Russian Federation(SVR)(Organization)", "shape": "dot", "size": 10, "type": "entity", "x": 600.0, "y": 500.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Credential hopping(Technique)", "label": "Credential hopping(Technique)", "shape": "dot", "size": 10, "type": "entity", "x": 700.0, "y": 500.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Credential Access", "label": "Credential Access", "shape": "star", "size": 10, "type": "tactic", "x": 1745.4545454545455, "y": -300.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Credential Access-Others", "label": "Credential Access-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 1454.5454545454547, "y": -200.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Credential Access-T1539-Steal Web Session Cookie", "label": "Credential Access-T1539-Steal Web Session Cookie", "shape": "hexagon", "size": 10, "type": "technique", "x": 1745.4545454545455, "y": -200.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Credential Access-T1555-Credentials from Password Stores", "label": "Credential Access-T1555-Credentials from Password Stores", "shape": "hexagon", "size": 10, "type": "technique", "x": 2036.3636363636365, "y": -200.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Browser cookie theft(Technique)", "label": "Browser cookie theft(Technique)", "shape": "dot", "size": 10, "type": "entity", "x": 1000.0, "y": 500.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Microsoft Service Principal manipulation(Technique)", "label": "Microsoft Service Principal manipulation(Technique)", "shape": "dot", "size": 10, "type": "entity", "x": 800.0, "y": 500.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Credential Theft(Technique)", "label": "Credential Theft(Technique)", "shape": "dot", "size": 10, "type": "entity", "x": 1600.0, "y": 500.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Get-ADReplAccount(Filename)", "label": "Get-ADReplAccount(Filename)", "shape": "dot", "size": 10, "type": "entity", "x": 1800.0, "y": 500.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "CredentialAccess(Technique)", "label": "CredentialAccess(Technique)", "shape": "dot", "size": 10, "type": "entity", "x": 2200.0, "y": 500.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Initial Access(Tactic)", "label": "Initial Access(Tactic)", "shape": "dot", "size": 10, "type": "entity", "x": 2400.0, "y": 500.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Persistence(Tactic)", "label": "Persistence(Tactic)", "shape": "dot", "size": 10, "type": "entity", "x": 2600.0, "y": 500.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Persistence", "label": "Persistence", "shape": "star", "size": 10, "type": "tactic", "x": 581.8181818181819, "y": -300.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Persistence-T1546-Event Triggered Execution", "label": "Persistence-T1546-Event Triggered Execution", "shape": "hexagon", "size": 10, "type": "technique", "x": 581.8181818181819, "y": -200.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "DefenseEvasion(Tactic)", "label": "DefenseEvasion(Tactic)", "shape": "dot", "size": 10, "type": "entity", "x": 2800.0, "y": 500.0}, {"color": "#FFD700", "depth": 2, "font_size": 8, "id": "Discovery", "label": "Discovery", "shape": "star", "size": 10, "type": "tactic", "x": 2327.2727272727275, "y": -300.0}, {"color": "#FF6347", "depth": 1, "font_size": 8, "id": "Discovery-Others", "label": "Discovery-Others", "shape": "hexagon", "size": 10, "type": "technique", "x": 2327.2727272727275, "y": -200.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Discovery(Tactic)", "label": "Discovery(Tactic)", "shape": "dot", "size": 10, "type": "entity", "x": 3000.0, "y": 500.0}, {"color": "#97c2fc", "depth": 1, "font_size": 8, "id": "Collection(Tactic)", "label": "Collection(Tactic)", "shape": "dot", "size": 10, "type": "entity", "x": 3200.0, "y": 500.0}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Construct_0", "label": "Object", "relation": "Object", "to": "StellarParticle Campaign(Report Type)", "width": 1}, {"arrows": "to", "from": "Construct_0", "to": "Modify_1", "width": 1}, {"arrows": "to", "from": "CrowdStrike(Author)", "label": "Subject", "relation": "Subject", "to": "Construct_0", "width": 1}, {"arrows": "to", "from": "CrowdStrike(Author)", "label": "Subject", "relation": "Subject", "to": "Detect_13", "width": 1}, {"arrows": "to", "from": "StellarParticle Campaign(Report Type)", "label": "Belong to", "relation": "Belong to", "to": "SUNSPOT(Threat Actor)", "width": 1}, {"arrows": "to", "from": "StellarParticle Campaign(Report Type)", "label": "Belong to", "relation": "Belong to", "to": "COZY BEAR(Threat Actor)", "width": 1}, {"arrows": "to", "from": "StellarParticle Campaign(Report Type)", "label": "Subject", "relation": "Subject", "to": "Use_14", "width": 1}, {"arrows": "to", "from": "StellarParticle Campaign(Report Type)", "label": "Subject", "relation": "Subject", "to": "Use_15", "width": 1}, {"arrows": "to", "from": "StellarParticle Campaign(Report Type)", "label": "Subject", "relation": "Subject", "to": "Use_16", "width": 1}, {"arrows": "to", "from": "StellarParticle Campaign(Report Type)", "label": "Subject", "relation": "Subject", "to": "Use_17", "width": 1}, {"arrows": "to", "from": "StellarParticle Campaign(Report Type)", "label": "Subject", "relation": "Subject", "to": "Use_18", "width": 1}, {"arrows": "to", "from": "StellarParticle Campaign(Report Type)", "label": "Subject", "relation": "Subject", "to": "Use_19", "width": 1}, {"arrows": "to", "from": "StellarParticle Campaign(Report Type)", "label": "Has value", "relation": "Has value", "to": "Indicator of Compromise(IOCs)", "width": 1}, {"arrows": "to", "from": "Others", "to": "Others-Others", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Construct_0", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Modify_1", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Detect_13", "width": 1}, {"arrows": "to", "from": "Others-Others", "to": "Use_19", "width": 1}, {"arrows": "to", "from": "crowdstrike.com(Author)", "label": "Has URL", "relation": "Has URL", "to": "StellarParticle Campaign(Report Type)", "width": 1}, {"arrows": "to", "from": "CrowdStrike Services(Author)", "label": "Belong to", "relation": "Belong to", "to": "CrowdStrike Intelligence(Vender)", "width": 1}, {"arrows": "to", "from": "Modify_1", "label": "Object", "relation": "Object", "to": "StellarParticle Campaign(Report Type)", "width": 1}, {"arrows": "to", "from": "Modify_1", "to": "Use_2", "width": 1}, {"arrows": "to", "from": "Modify_1", "to": "Use_3", "width": 1}, {"arrows": "to", "from": "Modify_1", "to": "Use_4", "width": 1}, {"arrows": "to", "from": "January 27, 2022(Date)", "label": "Subject", "relation": "Subject", "to": "Modify_1", "width": 1}, {"arrows": "to", "from": "Use_2", "label": "Object", "relation": "Object", "to": "GoldMax(Malware)", "width": 1}, {"arrows": "to", "from": "Use_2", "to": "Operate_5", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_2", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_3", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_4", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_6", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_7", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_8", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_9", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_10", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_11", "width": 1}, {"arrows": "to", "from": "COZY BEAR(Threat Actor)", "label": "Subject", "relation": "Subject", "to": "Use_12", "width": 1}, {"arrows": "to", "from": "Execution", "to": "Execution-Others", "width": 1}, {"arrows": "to", "from": "Execution", "to": "Execution-T1203-Exploitation for Client Execution", "width": 1}, {"arrows": "to", "from": "Execution-Others", "to": "Use_2", "width": 1}, {"arrows": "to", "from": "Execution-Others", "to": "Use_9", "width": 1}, {"arrows": "to", "from": "Execution-Others", "to": "Use_10", "width": 1}, {"arrows": "to", "from": "Use_3", "label": "Object", "relation": "Object", "to": "TrailBlazer(Malware)", "width": 1}, {"arrows": "to", "from": "Use_3", "to": "Operate_5", "width": 1}, {"arrows": "to", "from": "Collection", "to": "Collection-Others", "width": 1}, {"arrows": "to", "from": "Collection-Others", "to": "Use_3", "width": 1}, {"arrows": "to", "from": "Use_4", "label": "Object", "relation": "Object", "to": "Novel Tactics and Techniques(Tactic)", "width": 1}, {"arrows": "to", "from": "Use_4", "to": "Operate_5", "width": 1}, {"arrows": "to", "from": "Defense Evasion", "to": "Defense Evasion-Others", "width": 1}, {"arrows": "to", "from": "Defense Evasion", "to": "Defense Evasion-T1027-Obfuscated Files or Information", "width": 1}, {"arrows": "to", "from": "Defense Evasion-Others", "to": "Use_4", "width": 1}, {"arrows": "to", "from": "Defense Evasion-Others", "to": "Operate_5", "width": 1}, {"arrows": "to", "from": "Operate_5", "label": "Object", "relation": "Object", "to": "StellarParticle Campaign(Report Type)", "width": 1}, {"arrows": "to", "from": "Operate_5", "to": "Use_6", "width": 1}, {"arrows": "to", "from": "Foreign Intelligence Service of the Russian Federation(SVR)(Organization)", "label": "Subject", "relation": "Subject", "to": "Operate_5", "width": 1}, {"arrows": "to", "from": "Use_6", "label": "Object", "relation": "Object", "to": "Credential hopping(Technique)", "width": 1}, {"arrows": "to", "from": "Use_6", "to": "Use_7", "width": 1}, {"arrows": "to", "from": "Use_6", "to": "Use_8", "width": 1}, {"arrows": "to", "from": "Credential Access", "to": "Credential Access-Others", "width": 1}, {"arrows": "to", "from": "Credential Access", "to": "Credential Access-T1539-Steal Web Session Cookie", "width": 1}, {"arrows": "to", "from": "Credential Access", "to": "Credential Access-T1555-Credentials from Password Stores", "width": 1}, {"arrows": "to", "from": "Credential Access-Others", "to": "Use_6", "width": 1}, {"arrows": "to", "from": "Use_7", "label": "Object", "relation": "Object", "to": "Browser cookie theft(Technique)", "width": 1}, {"arrows": "to", "from": "Use_7", "to": "Use_9", "width": 1}, {"arrows": "to", "from": "Credential Access-T1539-Steal Web Session Cookie", "to": "Use_7", "width": 1}, {"arrows": "to", "from": "Credential Access-T1539-Steal Web Session Cookie", "to": "Use_8", "width": 1}, {"arrows": "to", "from": "Use_8", "label": "Object", "relation": "Object", "to": "Microsoft Service Principal manipulation(Technique)", "width": 1}, {"arrows": "to", "from": "Use_8", "to": "Use_9", "width": 1}, {"arrows": "to", "from": "Use_9", "label": "Object", "relation": "Object", "to": "TrailBlazer(Malware)", "width": 1}, {"arrows": "to", "from": "Use_9", "to": "Use_10", "width": 1}, {"arrows": "to", "from": "Use_10", "label": "Object", "relation": "Object", "to": "GoldMax(Malware)", "width": 1}, {"arrows": "to", "from": "Use_10", "to": "Use_11", "width": 1}, {"arrows": "to", "from": "Use_11", "label": "Object", "relation": "Object", "to": "Credential Theft(Technique)", "width": 1}, {"arrows": "to", "from": "Use_11", "to": "Use_12", "width": 1}, {"arrows": "to", "from": "Credential Access-T1555-Credentials from Password Stores", "to": "Use_11", "width": 1}, {"arrows": "to", "from": "Credential Access-T1555-Credentials from Password Stores", "to": "Use_12", "width": 1}, {"arrows": "to", "from": "Use_12", "label": "Object", "relation": "Object", "to": "Get-ADReplAccount(Filename)", "width": 1}, {"arrows": "to", "from": "Use_12", "to": "Detect_13", "width": 1}, {"arrows": "to", "from": "Detect_13", "label": "Object", "relation": "Object", "to": "StellarParticle Campaign(Report Type)", "width": 1}, {"arrows": "to", "from": "Detect_13", "to": "Use_14", "width": 1}, {"arrows": "to", "from": "Use_14", "label": "Object", "relation": "Object", "to": "CredentialAccess(Technique)", "width": 1}, {"arrows": "to", "from": "Use_14", "to": "Use_15", "width": 1}, {"arrows": "to", "from": "Defense Evasion-T1027-Obfuscated Files or Information", "to": "Use_14", "width": 1}, {"arrows": "to", "from": "Use_15", "label": "Object", "relation": "Object", "to": "Initial Access(Tactic)", "width": 1}, {"arrows": "to", "from": "Use_15", "to": "Use_16", "width": 1}, {"arrows": "to", "from": "Execution-T1203-Exploitation for Client Execution", "to": "Use_15", "width": 1}, {"arrows": "to", "from": "Use_16", "label": "Object", "relation": "Object", "to": "Persistence(Tactic)", "width": 1}, {"arrows": "to", "from": "Use_16", "to": "Use_17", "width": 1}, {"arrows": "to", "from": "Persistence", "to": "Persistence-T1546-Event Triggered Execution", "width": 1}, {"arrows": "to", "from": "Persistence-T1546-Event Triggered Execution", "to": "Use_16", "width": 1}, {"arrows": "to", "from": "Use_17", "label": "Object", "relation": "Object", "to": "DefenseEvasion(Tactic)", "width": 1}, {"arrows": "to", "from": "Use_17", "to": "Use_18", "width": 1}, {"arrows": "to", "from": "Discovery", "to": "Discovery-Others", "width": 1}, {"arrows": "to", "from": "Discovery-Others", "to": "Use_17", "width": 1}, {"arrows": "to", "from": "Discovery-Others", "to": "Use_18", "width": 1}, {"arrows": "to", "from": "Use_18", "label": "Object", "relation": "Object", "to": "Discovery(Tactic)", "width": 1}, {"arrows": "to", "from": "Use_18", "to": "Use_19", "width": 1}, {"arrows": "to", "from": "Use_19", "label": "Object", "relation": "Object", "to": "Collection(Tactic)", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
