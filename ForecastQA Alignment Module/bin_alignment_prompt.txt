@@ -1,0 +1,68 @@
+Rule 1: The format of the triplet will be [Question, Tag, Answer]. 
+
+Rule 2: The triplet is Faithful if the 'Answer' is 'Yes', and the 'Question' is derived from the article.
+
+Rule 3: The triplet is Unfaithful if the 'Answer' is 'Yes', but the 'Question' is not derived from the article.
+
+Rule 4: The triplet is Faithful if the 'Answer' is 'No', and the 'Question' is not derived from the article.
+
+Rule 5: The triplet is Unfaithful if the 'Answer' is 'No', and the 'Question' is derived from the article.
+
+Rule 6: Using the 'Tag' in the triplet as a point of reference, follow the rules above. If the content of the article for that particular Tag in the article is None, the triplet is Unfaithful.
+
+Rule 7: The output can only either be a "Faithful" or a "Unfaithful". There should not be any analysis text of any kind, or any sitting on the fence. 
+
+Rule 8: Output format is as follows:
+(Faithful/Unfaithful)
+
+Example Input 1
+{
+  "Reconnaissance": "In recent COLDDRAW intrusions, UNC2596 likely performed initial reconnaissance activities to identify Internet-facing systems that may be vulnerable to exploitation, specifically targeting public-facing Microsoft Exchange infrastructure.",
+  "Resource Development": "None",
+  "Initial Access": "UNC2596 leveraged Microsoft Exchange vulnerabilities, including ProxyShell and ProxyLogon, as initial access points for deploying COLDDRAW ransomware, likely as early as August 2021.",
+  "Execution": "UNC2596 used a variety of tools for execution, including webshells, the TERMITE in-memory dropper, and built-in Windows utilities such as PsExec, RDP, and PowerShell. They also utilized malware available for purchase, such as WICKER, and exploits with publicly available proof-of-concept code.",
+  "Persistence": "UNC2596 actors manipulated or created Windows accounts and modified file access permissions to maintain persistence. In one case, they created a user account and added it to the administrator and RDP groups.",
+  "Privilege Escalation": "UNC2596 used credentials from valid accounts to escalate privileges. They leveraged credential theft tools like Mimikatz and WICKER, and in some cases, the source of these credentials was unknown.",
+  "Defense Evasion": "UNC2596 used BURNTCIGAR to disable endpoint protection and facilitate the execution of their ransomware and other tools without being inhibited by security software. They also used various techniques to evade detection, such as obfuscating files and information, process injection, and modifying the registry.",
+  "Credential Access": "UNC2596 leveraged credential theft tools such as Mimikatz and WICKER to access credentials from valid accounts.",
+  "Discovery": "UNC2596 performed internal reconnaissance using tools like WEDGECUT to identify active network hosts and files to exfiltrate. They interactively browsed file systems and used scripts to map all drives to network shares, aiding in user file discovery.",
+  "Lateral Movement": "UNC2596 used methods such as RDP, SMB, and PsExec for lateral movement, often facilitated by BEACON. They deployed various backdoors, including NetSupport RAT, BEACON, and BUGHATCH, using predictable filenames and PowerShell launchers.",
+  "Collection": "UNC2596 collected user files for their multi-faceted extortion scheme. They used scripts to map drives to network shares, facilitating encryption and possibly assisting with collection efforts.",
+  "Command and Control": "UNC2596 communicated with compromised systems using web protocols, DNS, and non-application layer protocols. They transferred tools and malware, such as TERMITE, BUGHATCH, and BURNTCIGAR, to the compromised systems.",
+  "Exfiltration": "UNC2596 exfiltrated data to their BEACON infrastructure rather than using cloud storage providers. They threatened to publish data on their shaming site if ransoms were not paid.",
+  "Impact": "UNC2596's COLDDRAW ransomware encrypted data for impact and stopped services associated with common server applications. They used an embedded RSA key for encryption and appended the .cuba file extension to encrypted files.",
+  "Others": "None"
+}
+{
+  ["Question: Will UNC2596 evade detection by modifying system files in the '/etc' directory?", "Tag: Defense Evasion", "Answer: No"]
+}
+
+Reply 1 {
+  Faithful
+}
+
+Example Input 2
+{
+  "Reconnaissance": "In recent COLDDRAW intrusions, UNC2596 likely performed initial reconnaissance activities to identify Internet-facing systems that may be vulnerable to exploitation, specifically targeting public-facing Microsoft Exchange infrastructure.",
+  "Resource Development": "None",
+  "Initial Access": "UNC2596 leveraged Microsoft Exchange vulnerabilities, including ProxyShell and ProxyLogon, as initial access points for deploying COLDDRAW ransomware, likely as early as August 2021.",
+  "Execution": "UNC2596 used a variety of tools for execution, including webshells, the TERMITE in-memory dropper, and built-in Windows utilities such as PsExec, RDP, and PowerShell. They also utilized malware available for purchase, such as WICKER, and exploits with publicly available proof-of-concept code.",
+  "Persistence": "UNC2596 actors manipulated or created Windows accounts and modified file access permissions to maintain persistence. In one case, they created a user account and added it to the administrator and RDP groups.",
+  "Privilege Escalation": "UNC2596 used credentials from valid accounts to escalate privileges. They leveraged credential theft tools like Mimikatz and WICKER, and in some cases, the source of these credentials was unknown.",
+  "Defense Evasion": "UNC2596 used BURNTCIGAR to disable endpoint protection and facilitate the execution of their ransomware and other tools without being inhibited by security software. They also used various techniques to evade detection, such as obfuscating files and information, process injection, and modifying the registry.",
+  "Credential Access": "UNC2596 leveraged credential theft tools such as Mimikatz and WICKER to access credentials from valid accounts.",
+  "Discovery": "UNC2596 performed internal reconnaissance using tools like WEDGECUT to identify active network hosts and files to exfiltrate. They interactively browsed file systems and used scripts to map all drives to network shares, aiding in user file discovery.",
+  "Lateral Movement": "UNC2596 used methods such as RDP, SMB, and PsExec for lateral movement, often facilitated by BEACON. They deployed various backdoors, including NetSupport RAT, BEACON, and BUGHATCH, using predictable filenames and PowerShell launchers.",
+  "Collection": "UNC2596 collected user files for their multi-faceted extortion scheme. They used scripts to map drives to network shares, facilitating encryption and possibly assisting with collection efforts.",
+  "Command and Control": "UNC2596 communicated with compromised systems using web protocols, DNS, and non-application layer protocols. They transferred tools and malware, such as TERMITE, BUGHATCH, and BURNTCIGAR, to the compromised systems.",
+  "Exfiltration": "UNC2596 exfiltrated data to their BEACON infrastructure rather than using cloud storage providers. They threatened to publish data on their shaming site if ransoms were not paid.",
+  "Impact": "UNC2596's COLDDRAW ransomware encrypted data for impact and stopped services associated with common server applications. They used an embedded RSA key for encryption and appended the .cuba file extension to encrypted files.",
+  "Others": "None"
+}
+{
+  ["Question: Will UNC2596 utilise WMIEXEC for lateral movement? ", "Tag: Lateral Movement", "Answer: Yes"]
+}
+
+Reply 2 {
+  Unfaithful
+}
